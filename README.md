@@ -24,8 +24,24 @@
  
  ## Pipeline Steps
  * Pre-processing the input
- * 
- ## Vesioning Pipekines
+ * Pre-Indexing reference genome/transcripome
+ * Mapping reads to ref genome/transcriptome
+ * features quantification
+ * Features assembly
+ * Features differenciation
+ * Stats generation
+ * Visualization
  
+ ## Vesioning Pipelines
+ 
+ ## RNA-Seq Pipelines
+ * RNAs Long Reads - longer than 200 bp: for mRNAs (poly-A(+)), rRNA-depleted total RNA, or poly-A(-) RNA populations
+     * Paired-end
+     * Single-ended
+
+ * RNAs Short reads - shorter than 200 bp: for mRNAs (poly-A(+)), rRNA-depleted total RNA, or poly-A(-) RNA populations
+ * miRNA-seq: for microRNAs, around 22nt long, that are quantified from RNA-seq data
+ * miRNA counts: a complement to miRNA-seq 
+
  ## USEFUL LINKS
  * Data Processing Pipelines: https://www.encodeproject.org/pipelines/
