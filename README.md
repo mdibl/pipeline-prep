@@ -17,7 +17,7 @@
  ## Type Of Pipelines
  
  * RNA-seq pipelines
- * RAMPAGE pipeline
+ * RAMPAGE pipelines
  * Chromatin Immunoprecipitation pipelines 
  * DNA accessibility pipelines
  * DNA methylation pipeline
@@ -42,6 +42,10 @@
  * RNAs Short reads - shorter than 200 bp: for mRNAs (poly-A(+)), rRNA-depleted total RNA, or poly-A(-) RNA populations
  * miRNA-seq: for microRNAs, around 22nt long, that are quantified from RNA-seq data
  * miRNA counts: a complement to miRNA-seq 
+
+## RAMPAGE Pipelines
+
+RAMPAGE (RNA Annotation and Mapping of Promoters for the Analysis of Gene Expression) is a very accurate sequencing approach to identify transcription start sites (TSSs) at base-pair resolution, to quantify their expression, and to characterize their transcripts. RAMPAGE uses direct cDNA evidence to link specific genes and their TSSs.
 
  ## USEFUL LINKS
  * Data Processing Pipelines: https://www.encodeproject.org/pipelines/
