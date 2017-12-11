@@ -7,13 +7,13 @@
  ```
  ## Pipeline Tools
  ### Alingment tools - Short reads:
- * Bwa
+ * Bwa.    -- http://bio-bwa.sourceforge.net/bwa.shtml
  * Bowtie 
- * Hisat2 
+ * Hisat2  -- http://ccb.jhu.edu/software/hisat2/manual.shtml#the-hisat2-build-indexer
  * star
  
  ### Alingment tools - Long reads:
- *	Bowtie2
+ *	Bowtie2.  -- http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml#getting-started-with-bowtie-2-lambda-phage-example
  *	Bwa(BWA-SW and BWA-MEM)
  *	Hisat2 (a replacement of Tophat)
 
