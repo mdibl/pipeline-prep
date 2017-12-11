@@ -10,13 +10,19 @@ An automation that pre-indexes datasets whenever one of the following events hap
 ```
 Usage: $path2/bwa  index <reference_fasta>
 
+Notes:
+This gives .pac, .bwt, .ann, .amb and .sa index files that all have the same reference_fasta basename. 
+Tools recognize index files within the same directory by their identical basename.
+
 See: http://www.htslib.org/workflow/#mapping_to_variant
      https://github.com/lh3/bwa#type
+   
 ```
 * Bowtie -- http://bowtie-bio.sourceforge.net/manual.shtml
 ```
 Usage: $path2/bowtie-build  <reference_fasta> <index_prefix>
 See: http://bowtie-bio.sourceforge.net/tutorial.shtml#newi
+
 ```
 * Bowtie2 -- http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml
 ```
