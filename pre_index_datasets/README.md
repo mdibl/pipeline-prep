@@ -39,15 +39,20 @@ See: http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml#the-bowtie2-build-in
 Usage: $path2/hisat2-build [options]* <reference_in> <ht2_base>
 
 Notes:
-If you use --snp, --ss, and/or --exon, hisat2-build will need about 200GB RAM for the human genome size as index building involves a graph construction.  Otherwise, you will be able to build an index on your desktop with 8GB RAM.
+If you use --snp, --ss, and/or --exon, hisat2-build will need about 200GB RAM for the human genome size 
+as index building involves a graph construction.  Otherwise, you will be able to build an index 
+on your desktop with 8GB RAM.
 
 Main arguments:
 
 <reference_in>
-A comma-separated list of FASTA files containing the reference sequences to be aligned to, or, if -c is specified, the sequences themselves. E.g., <reference_in> might be chr1.fa,chr2.fa,chrX.fa,chrY.fa, or, if -c is specified, this might be GGTCATCCT,ACGGGTCGT,CCGTTCTATGCGGCTTA.
+A comma-separated list of FASTA files containing the reference sequences to be aligned to, or, 
+if -c is specified, the sequences themselves. E.g., <reference_in> might be chr1.fa,chr2.fa,chrX.fa,
+chrY.fa, or, if -c is specified, this might be GGTCATCCT,ACGGGTCGT,CCGTTCTATGCGGCTTA.
 
 <ht2_base>
-The basename of the index files to write. By default, hisat2-build writes files named NAME.1.ht2, NAME.2.ht2, NAME.3.ht2, NAME.4.ht2, NAME.5.ht2, NAME.6.ht2, NAME.7.ht2, and NAME.8.ht2 where NAME is <ht2_base>.
+The basename of the index files to write. By default, hisat2-build writes files named NAME.1.ht2, 
+NAME.2.ht2, NAME.3.ht2, NAME.4.ht2, NAME.5.ht2, NAME.6.ht2, NAME.7.ht2, and NAME.8.ht2 where NAME is <ht2_base>.
 ```
 * kallisto
 * Salmon
