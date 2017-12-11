@@ -9,7 +9,7 @@ An automation that pre-indexes datasets whenever one of the following events hap
 * Bwa  -- http://bio-bwa.sourceforge.net/bwa.shtml 
 * Bowtie -- http://bowtie-bio.sourceforge.net/manual.shtml
 * Bowtie2 -- http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml
-* Hisat2
+* Hisat2  -- http://ccb.jhu.edu/software/hisat2/manual.shtml#the-hisat2-build-indexer
 * kallisto
 * Salmon
 * Star
