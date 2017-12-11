@@ -7,6 +7,12 @@ An automation that pre-indexes datasets whenever one of the following events hap
 
 ## Alingment Tools
 * Bwa  -- http://bio-bwa.sourceforge.net/bwa.shtml 
+```
+Usage: $path2/bwa  index <reference_fasta>
+
+See: http://www.htslib.org/workflow/#mapping_to_variant
+     https://github.com/lh3/bwa#type
+```
 * Bowtie -- http://bowtie-bio.sourceforge.net/manual.shtml
 ```
 Usage: $path2/bowtie-build  <reference_fasta> <index_prefix>
