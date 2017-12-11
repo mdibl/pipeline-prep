@@ -6,9 +6,9 @@ An automation that pre-indexes datasets whenever one of the following events hap
 2) A new version of the dataset is downloaded
 
 ## Alingment Tools
-* Bwa
-* Bowtie
-* Bowtie2
+* Bwa  -- http://bio-bwa.sourceforge.net/bwa.shtml 
+* Bowtie -- http://bowtie-bio.sourceforge.net/manual.shtml
+* Bowtie2 -- http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml
 * Hisat2
 * kallisto
 * Salmon
