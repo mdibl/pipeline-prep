@@ -58,7 +58,8 @@ chrY.fa, or, if -c is specified, this might be GGTCATCCT,ACGGGTCGT,CCGTTCTATGCGG
 
 <ht2_base>
 The basename of the index files to write. By default, hisat2-build writes files named NAME.1.ht2, 
-NAME.2.ht2, NAME.3.ht2, NAME.4.ht2, NAME.5.ht2, NAME.6.ht2, NAME.7.ht2, and NAME.8.ht2 where NAME is <ht2_base>.
+NAME.2.ht2, NAME.3.ht2, NAME.4.ht2, NAME.5.ht2, NAME.6.ht2, NAME.7.ht2, and NAME.8.ht2 
+where NAME is <ht2_base>.
 ```
 * kallisto
 * Salmon
