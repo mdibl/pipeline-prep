@@ -5,6 +5,23 @@ An automation that pre-indexes datasets whenever one of the following events hap
 1) A new version of the alignment tool is installed
 2) A new version of the dataset is downloaded
 
+## Index Inputs
+The input is stored by source-version/organism-dataset under the /data/scratch directory in a structure to /data/external/
+For example, ensembl 91 genemone and transcriptome datasets for can be found under:
+```
+   Ensembl datasets (dna,cdna,pep,cdna,ncrna) for human:
+       1) /data/scratch/ensembl-91/homo_sapiens-dna/
+       2) /data/scratch/ensembl-91/homo_sapiens-cdna/
+       3) /data/scratch/ensembl-91/homo_sapiens-ncrna/
+       4) /data/scratch/ensembl-91/homo_sapiens-pep/
+       5) /data/scratch/ensembl-91/homo_sapiens-cds/
+       
+```
+This layout makes it easy to write an automation that generates the above structure whenever
+the external source releases a new version
+
+### Genomes
+### Transcriptomes
 ## Alingment Tools
 * Bwa  -- http://bio-bwa.sourceforge.net/bwa.shtml 
 ```
@@ -65,6 +82,4 @@ where NAME is <ht2_base>.
 * Salmon
 * Star
 
-## Datasets
-### Genomes
-### Transcriptomes
+
