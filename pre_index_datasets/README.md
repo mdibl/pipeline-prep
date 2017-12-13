@@ -39,6 +39,11 @@ We could further organize indexes by organism-dataset or just store the indexes 
 the /data/transformed/tool-version/source-version/ root directory. In the case of ensembl datasets,
 the name of the organism(scientific name) and the dataset are part of the file name.
 
+```
+For example:
+   Homo_sapiens.GRCh38.dna.chromosome.21.fa
+```
+
 Again this layout makes it easy for automation since each time we install a new version of the tool,
 we keep we update the content of the current_release_number file found in the root directory of each external tool
 
