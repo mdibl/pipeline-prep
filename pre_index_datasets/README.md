@@ -37,7 +37,7 @@ under:
 
 We could further organize indexes by organism-dataset or just store the indexes under 
 the /data/transformed/tool-version/source-version/ root directory. In the case of ensembl datasets,
-the name of the organism(scientific name) and the dataset are part of the file name.
+the names of the organism(scientific name) and the dataset are part of the file name.
 
 ```
 For example:
@@ -48,6 +48,12 @@ Again this layout makes it easy for automation since each time we install a new 
 we keep we update the content of the current_release_number file found in the root directory of each external tool
 
 ## Index File Format
+Some tools,bowtie(2), accept the index file prefix as an argument to the indexer - others like bwa use the reference file
+name a a prefix to the index files.
+
+Since ensembl uses the organism(scientific name) and the dataset as part of the file name -
+should we follow the same standard?
+
 
 ## Testing Indexes?
 How do we test that the indexes were generated properlly?
