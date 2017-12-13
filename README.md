@@ -7,6 +7,7 @@
  ```
  
   ## Pipeline Steps
+  
  * Pre-Indexing reference genome/transcripome
  * Pre-processing the reads
  * Mapping reads to ref genome/transcriptome indexes
@@ -17,6 +18,20 @@
  * Visualization
  
  ## Vesioning Pipelines
+ 
+ We run the given pipeline whenever one of the following conditions is met:
+ 
+ * New release detected from input dataset source
+ * New version detected for any alignment tool that is part of the pipeline 
+ * New version detected for any file processing tool that is part of the pipeline
+ * New version detected for any statistical analysis tool that is part of the pipeline
+ 
+ Each run represents a version of a given pipeline. Some runs will require the indexes generation
+ and some not. For example - new release of the reference dataset, or new release of the alignment tool
+ both require re-indexing. But a new release of tools/datasets involved in post-indexing steps of a specific
+ pipeline might not require re-indexing the reference dataset.
+ 
+ 
  
  ## Pipeline Tools
  ### Alingment tools - Short reads:
