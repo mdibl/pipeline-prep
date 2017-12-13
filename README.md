@@ -19,7 +19,7 @@
  
  ## Vesioning Pipelines
  
- We run the given pipeline whenever one of the following conditions is met:
+ We run a given pipeline whenever one of the following conditions is met:
  
  * New release detected from input dataset source
  * New version detected for any alignment tool that is part of the pipeline 
