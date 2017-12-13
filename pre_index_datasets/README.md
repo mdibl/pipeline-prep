@@ -38,6 +38,10 @@ the namea of the organism(scientific name) and the dataset are part of the file 
 Again this layout makes it easy for automation since each time we install a new version of the tool,
 we keep we update the content of the current_release_number file found in the root directory of each external tool
 
+## Index File Format
+
+## Testing Indexes?
+How do we test that the indexes were generated properlly?
 
 ### Genomes
 ### Transcriptomes
