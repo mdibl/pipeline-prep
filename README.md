@@ -10,7 +10,7 @@
  * Pre-Indexing reference genome/transcripome
  * Pre-processing the reads
  * Mapping reads to ref genome/transcriptome indexes
- * features quantification
+ * Features quantification
  * Features assembly
  * Features differenciation
  * Stats generation
