@@ -5,6 +5,19 @@
  a software tool, or a file format manipulation. These steps are applied to the primary data
  (generated from an experimental assay) to produce visualizable data" ~ENCODE
  ```
+ 
+  ## Pipeline Steps
+ * Pre-Indexing reference genome/transcripome
+ * Pre-processing the reads
+ * Mapping reads to ref genome/transcriptome indexes
+ * features quantification
+ * Features assembly
+ * Features differenciation
+ * Stats generation
+ * Visualization
+ 
+ ## Vesioning Pipelines
+ 
  ## Pipeline Tools
  ### Alingment tools - Short reads:
  * Bwa.    -- http://bio-bwa.sourceforge.net/bwa.shtml
@@ -47,18 +60,6 @@
  * Chromatin Immunoprecipitation pipelines 
  * DNA accessibility pipelines
  * DNA methylation pipeline
- 
- ## Pipeline Steps
- * Pre-processing the input
- * Pre-Indexing reference genome/transcripome
- * Mapping reads to ref genome/transcriptome
- * features quantification
- * Features assembly
- * Features differenciation
- * Stats generation
- * Visualization
- 
- ## Vesioning Pipelines
  
  ## RNA-Seq Pipelines
  * RNAs Long Reads - longer than 200 bp: for mRNAs (poly-A(+)), rRNA-depleted total RNA, or poly-A(-) RNA populations
