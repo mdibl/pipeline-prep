@@ -5,7 +5,7 @@ An automation that pre-indexes datasets whenever one of the following events hap
 1) A new version of the alignment tool is installed
 2) A new version of the dataset is downloaded
 
-## Index Inputs
+## Index Input Datasets
 The input is stored by source-version/organism-dataset under the /data/scratch directory in a structure similar to that of /data/external/
 For example, ensembl 91 genemone and transcriptome datasets for can be found under:
 ```
