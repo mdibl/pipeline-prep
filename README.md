@@ -17,7 +17,7 @@
  * Stats generation
  * Visualization
  
- ## Vesioning Pipelines
+ ## Versioning Pipelines
  
  We run a given pipeline whenever one of the following conditions is met:
  
