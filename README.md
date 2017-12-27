@@ -26,7 +26,7 @@
  * New version detected for any file processing tool that is part of the pipeline
  * New version detected for any statistical analysis tool that is part of the pipeline
  
- Each run represents a version of a given pipeline. Some runs will require the indexes generation
+ Each run represents a version of a given pipeline. Some runs will require indexes be re-generated
  and some not. For example - new release of the reference dataset, or new release of the alignment tool
  both require re-indexing. But a new release of tools/datasets involved in post-indexing steps of a specific
  pipeline might not require re-indexing the reference dataset.
