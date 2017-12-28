@@ -1,0 +1,102 @@
+#!/bin/sh
+
+#
+#A script to pre-index a given dataset 
+# In Bwa
+
+# Input:
+# 1) data_source_name
+# 2) dataset_name
+# 3) source_version
+# 4) bwa version <v0.7.16 | v0.7.17> default current verion
+#
+
+SCRIPT_NAME=`basename $0`
+cd `dirname $0`
+echo "Running script from `pwd`"
+
+if [ $# -lt 5 ]
+then 
+  echo "Usage: ./$SCRIPT_NAME  source source-version organism dataset bwa-version"
+  echo "Example: ./$SCRIPT_NAME ensembl ensembl-91 danio_rerio cdna bwa-v0.7.16"
+  exit 1
+fi
+#Check that bwa.cfg exists 
+if [ ! -f bwa.cfg ]
+then
+  echo "ERROR: bwa.cfg file missing from `pwd`"
+  exit 1
+fi
+
+source ./bwa.cfg
+
+organism=$3
+dataset=$4
+data_source=$1
+source_version=$2
+tool_version=$5
+
+tool_index_base=$INDEX_BASE/$tool_version
+index_dir=$tool_index_base/$source_version/$organism-$dataset
+datasets_fasta_dir=$FASTA_BASE/$source_version/$organism-$dataset
+
+source_config=../../data_sources/$data_source.cfg
+
+log=$LOGS_BASE/$SCRIPT_NAME.$source_version.$organism-$dataset.$tool_version.log
+
+rm -rf $log
+touch $log
+
+echo "*************************************************" | tee -a $log
+echo "Generating $tool_version indexes for $source_version $organism's $dataset"  | tee -a $log
+echo "*************************************************" | tee -a $log
+echo "Date:`date`" | tee -a $log
+echo "ORGANIZATION:$ORGANIZATION" | tee -a $log 
+
+if [ ! -d $datasets_fasta_dir ]
+then
+   echo "ERROR: directory $datasets_fasta_dir does not exists" | tee -a $log
+   exit 1
+fi
+
+#
+# Create index directory if not exists
+#
+[ ! -d $index_dir ] && mkdir -p $index_dir
+if [ -d $index_dir ]
+then
+   echo "ERROR: Failed to create $index_dir"
+   exit 1
+fi
+echo "Tool-version: $tool_version" | tee -a $log
+echo "Source-version: $source_version" | tee -a $log
+echo "Organism: $organism" | tee -a $log
+echo "Dataset: $dataset" | tee -a $log
+echo "Indexes Directory: $index_dir" | tee -a $log
+echo "Dataset Directory: $datasets_fasta_dir" | tee -a $log
+source ./$source_config
+file_pattern=""
+case "$dataset" in
+"cdna")
+    file_pattern=${cdna}
+    ;;
+"cds")
+    file_pattern=${cds}
+    ;;    
+"pep")
+    file_pattern=${pep}
+    ;;
+"ncrna")
+    file_pattern=${ncrna}
+    ;;
+
+"dna")
+    file_pattern=${dna}
+    ;;
+*)
+    ;;
+esac
+echo "Dataset File pattern: $file_pattern" | tee -a $log
+
+echo "Program Complete"
+exit 0
