@@ -32,12 +32,10 @@ For example, ensembl 91 genemone indexes generated using bwa version v0.7.17 can
 under:
 
 ```
-   /data/transformed/bwa-v0.7.17/ensembl-91/
+   /data/transformed/bwa-v0.7.17/ensembl-91/homo_sapiens-dna/
 ```
 
-We could further organize indexes by organism-dataset or just store the indexes under 
-the /data/transformed/tool-version/source-version/ root directory. In the case of ensembl datasets,
-the names of the organism(scientific name) and the dataset are part of the file name.
+In the case of ensembl datasets, the names of the organism(scientific name) and the dataset are part of the file name.
 
 ```
 For example:
@@ -45,7 +43,7 @@ For example:
 ```
 
 Again this layout makes it easy for automation since each time we install a new version of the tool,
-we keep we update the content of the current_release_number file found in the root directory of each external tool
+we update the content of the current_release_number file found in the root directory of each external tool
 
 ## Index File Format
 Some tools,bowtie(2), accept the index file prefix as an argument to the indexer - others like bwa use the reference file
