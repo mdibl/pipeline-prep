@@ -16,13 +16,15 @@ SCRIPT_NAME=`basename $0`
 cd `dirname $0`
 echo "Running script from `pwd`"
 
-if [ $# -lt 5 ]
+if [ $# -lt 6 ]
 then 
-  echo "Usage: ./$SCRIPT_NAME  source source-version organism dataset bwa-version"
-  echo "Example: ./$SCRIPT_NAME ensembl ensembl-91 danio_rerio cdna bwa-v0.7.16"
+  echo "Usage: ./$SCRIPT_NAME  source source-version organism dataset tool-version tool_name"
+  echo "Example: ./$SCRIPT_NAME ensembl ensembl-91 danio_rerio cdna bwa-v0.7.16 bwa"
   exit 1
 fi
 #Check that bwa.cfg exists 
+tool_name=$6
+
 if [ ! -f bwa.cfg ]
 then
   echo "ERROR: bwa.cfg file missing from `pwd`"
@@ -114,11 +116,11 @@ FASTA_FILES="$genome_file"
 echo "Dataset File pattern: $file_pattern" | tee -a $log
 # run index command
 cd $index_dir
-file_prefix="-p $tool_version.$source_version.$organism-$dataset"
 echo "Running indexes from `pwd`" | tee -a $log
 for target_file  in $FASTA_FILES
 do 
-    file_prefix="-p $tool_version.$source_version.$target_file"
+    #file_prefix="-p $tool_version.$source_version.$target_file"
+    file_prefix="-p $tool_name-$data_source-$dataset"
     index_cmd="$tool_exec index $file_prefix $bwa_algorithm $datasets_fasta_dir/$target_file"
     echo "Dataset file: $datasets_fasta_dir/$target_file" | tee -a $log
     echo "Cmd: $index_cmd" | tee -a $log

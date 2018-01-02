@@ -125,7 +125,8 @@ do
    fi
 done
 
-bt2_base="$tool_version.$source_version.$organism-$dataset"
+#bt2_base="$tool_version.$source_version.$organism-$dataset"
+bt2_base="$tool_name-$data_source-$dataset"
 index_cmd="$tool_exec -f $reference_in $bt2_base"
 echo "Dataset file: $reference_in" | tee -a $log
 echo "Cmd: $index_cmd" | tee -a $log

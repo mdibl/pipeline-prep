@@ -1,4 +1,5 @@
 A set of scripts and config files to create indexes in Hisat2
+
 To prepare the reference for mapping you must first index it by typing the following command
 ```
   $path2/hisat2-build [options]* <reference_in> <ht2_base>
