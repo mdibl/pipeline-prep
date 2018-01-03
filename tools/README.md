@@ -49,10 +49,7 @@ we update the content of the current_release_number file found in the root direc
 
 Each index file is prefixed by tool_name-data_source_name-dataset_name 
 
-Question: Should we also include the reference file name in the prefix to the index files?
-```
-Since ensembl uses the organism(scientific name) and the dataset as part of the file name - should we follow the same standard?
-
+Question: Should we also include the reference file name in the prefix?
 
 ## Testing Indexes?
 How do we test that the indexes were generated properlly?
