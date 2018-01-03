@@ -114,7 +114,8 @@ where NAME is <ht2_base>.
 * kallisto. -- https://pachterlab.github.io/kallisto/starting
 
 ```
-Usage: $path2/kallisto index [arguments] FASTA-files
+Usage: $path2/kallisto index [arguments] index_name.idx reference_in
+Example: $path2/kallisto index -i kallisto-ensembl-cdna.idx /data/scratch/ensembl-91/danio_rerio-cdna/Danio_rerio.GRCz10.cdna.all.fa
 
 Required argument:
 
