@@ -54,8 +54,7 @@ Question: Should we also include the reference file name in the prefix?
 ## Testing Indexes?
 How do we test that the indexes were generated properlly?
 
-### Genomes
-### Transcriptomes
+
 ## Alingment Tools
 * Bwa  -- http://bio-bwa.sourceforge.net/bwa.shtml 
 ```
