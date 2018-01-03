@@ -55,10 +55,27 @@ Question: Should we also include the reference file name in the prefix?
 How do we test that the indexes were generated properlly?
 
 
-## Alingment Tools
+## Alingment Tools -- Reference Indexing
 * Bwa  -- http://bio-bwa.sourceforge.net/bwa.shtml 
 ```
-Usage: $path2/bwa  index <reference_fasta>
+Usage: $path2/bwa  index [-p prefix] [-a algoType] <in.db.fasta>
+
+Example: 
+$path2/bwa index $file_prefix $bwa_algorithm $datasets_fasta_dir/$target_file
+
+Index database sequences in the FASTA format.
+
+OPTIONS:
+-p STR  Prefix of the output database [same as db filename]
+
+-a STR  Algorithm for constructing BWT index. Available options are:
+     is  IS linear-time algorithm for constructing suffix array.
+         It requires 5.37N memory where N is the size of the database.
+         IS is moderately fast, but does not work with database larger than 2GB.
+         IS is the default algorithm due to its simplicity.
+         The current codes for IS algorithm are reimplemented by Yuta Mori.
+
+     bwtsw      Algorithm implemented in BWT-SW. This method works with the whole human genome.
 
 Notes:
 This gives .pac, .bwt, .ann, .amb and .sa index files that all have the same reference_fasta basename. 
@@ -132,5 +149,5 @@ Optional argument:
 The Fasta file supplied can be either in plaintext or gzipped format.
 
 ```
-
+## Alingment Tools -- Reads Alignment
 
