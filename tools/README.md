@@ -111,8 +111,23 @@ The basename of the index files to write. By default, hisat2-build writes files 
 NAME.2.ht2, NAME.3.ht2, NAME.4.ht2, NAME.5.ht2, NAME.6.ht2, NAME.7.ht2, and NAME.8.ht2 
 where NAME is <ht2_base>.
 ```
-* kallisto
-* Salmon
-* Star
+* kallisto. -- https://pachterlab.github.io/kallisto/starting
+
+```
+Usage: $path2/kallisto index [arguments] FASTA-files
+
+Required argument:
+
+-i, --index=STRING          Filename for the kallisto index to be constructed
+
+Optional argument:
+
+-k, --kmer-size=INT         k-mer (odd) length (default: 31, max value: 31)
+    --make-unique           Replace repeated target names with unique names
+
+
+The Fasta file supplied can be either in plaintext or gzipped format.
+
+```
 
 
