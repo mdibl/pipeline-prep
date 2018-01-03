@@ -46,11 +46,12 @@ Again this layout makes it easy for automation since each time we install a new 
 we update the content of the current_release_number file found in the root directory of each external tool
 
 ## Index File Format
-Some tools,bowtie(2), accept the index file prefix as an argument to the indexer - others like bwa use the reference file
-name a a prefix to the index files.
 
-Since ensembl uses the organism(scientific name) and the dataset as part of the file name -
-should we follow the same standard?
+Each index file is prefixed by tool_name-data_source_name-dataset_name 
+
+Question: Should we also include the reference file name in the prefix to the index files?
+```
+Since ensembl uses the organism(scientific name) and the dataset as part of the file name - should we follow the same standard?
 
 
 ## Testing Indexes?
