@@ -5,11 +5,11 @@
  a software tool, or a file format manipulation. These steps are applied to the primary data
  (generated from an experimental assay) to produce visualizable data" ~ENCODE
  ```
- Pipeline-prep repos is a set of scripts used to execute the first two steps of data pipeline.
+ Pipeline-prep repos is a set of scripts and configuration used to execute the first two steps of data pipeline.
  These steps include  Pre-Indexing reference genome/transcripome and Pre-processing the reads.
  
  
-  ## Pipeline Steps
+  ## Data Pipeline Steps
   
  * Pre-Indexing reference genome/transcripome
  * Pre-processing the reads
@@ -20,7 +20,7 @@
  * Stats generation
  * Visualization
  
- ## Versioning Pipelines
+ ## Versioning Data Pipelines
  
  We run a given pipeline whenever one of the following conditions is met:
  
@@ -36,7 +36,7 @@
  
  
  
- ## Pipeline Tools
+ ## Data Pipeline Tools
  ### Alingment tools - Short reads:
  * Bwa.    -- http://bio-bwa.sourceforge.net/bwa.shtml
  * Hisat2  -- http://ccb.jhu.edu/software/hisat2/manual.shtml#the-hisat2-build-indexer
