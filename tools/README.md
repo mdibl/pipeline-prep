@@ -9,6 +9,8 @@ An automation that pre-indexes datasets whenever one of the following events hap
 ### Bwa
    * dna (genome)
    * cdna
+   * cds
+   * ncrna
    
 ### Bowtie2
    * dna (genome)
@@ -23,7 +25,7 @@ An automation that pre-indexes datasets whenever one of the following events hap
    * ncrna
    
 ### Kallisto
-    * cdna
+   * cdna
    * cds
    * ncrna
    
