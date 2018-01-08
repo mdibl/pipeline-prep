@@ -1,13 +1,17 @@
 # About This Project
 
-Pipeline-prep project goal is to creates a set reusable modules used in running the first two steps of a given data pipeline. The two steps include:
+Pipeline-prep project's goal is in two folds - first creates a set reusable modules used in running the first two steps of a given data pipeline then create and automation to run the pre-indexing step. 
+
+The goals :
   1) Pre-Indexing reference genome/transcripome
-  2) Pre-processing the reads.
+  2) Automate Pre-indexing step
+  3) Pre-processing the reads.
+  
+The root directory of the project contains two main diretories - data_sources and tools
 
 ## Pre-Indexing reference genome/transcripome
 Indexes are created by tool version -> data source version > organism-dataset. Each data source specifies
 data format for a given dataset and each tool has its own sets of command to index the reference data.
-
 
 Each tool is a directory under tools  and each directory contains the following files:
 1)	A readme.md file
@@ -17,5 +21,6 @@ Each tool is a directory under tools  and each directory contains the following 
 
 Each data source is config file (tool.cfg) under data_sources/  and each config file contains the
 Mapping between datasets and the file format 
-## Pre-processing the reads
+
+## Automate Pre-indexing step
 
