@@ -40,7 +40,7 @@ source_version=$2
 tool_version=$5
 
 tool_index_base=$INDEX_BASE/$tool_version
-tool_exec=$PACKAGE_INSTALL_BASE/$tool_version/bwa
+tool_exec=$PACKAGE_INSTALL_BASE/$tool_version/$TOOL_INDEX_EXEC
 index_dir=$tool_index_base/$source_version/$organism-$dataset
 datasets_fasta_dir=$FASTA_BASE/$source_version/$organism-$dataset
 
