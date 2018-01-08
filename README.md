@@ -5,7 +5,7 @@
  a software tool, or a file format manipulation. These steps are applied to the primary data
  (generated from an experimental assay) to produce visualizable data" ~ENCODE
  ```
- Pipeline-prep project creates an automation to execute the first two steps of data pipeline.
+ Pipeline-prep project creates a set of scripts used to execute the first two steps of data pipeline.
  These steps include  Pre-Indexing reference genome/transcripome and Pre-processing the reads.
  
  
