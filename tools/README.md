@@ -5,12 +5,11 @@ An automation that pre-indexes datasets whenever one of the following events hap
 1) A new version of the dataset is downloaded
 2) A new version of the alignment tool is installed
 
-## Tools Reference Indexing
+## Reference Datasets To Index 
 ### Bwa
    * dna (genome)
    * cdna
-   * cds
-   * ncrna
+   
    
 ### Bowtie2
    * dna (genome)
