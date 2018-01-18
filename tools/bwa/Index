@@ -107,33 +107,11 @@ source ./$source_config
 file_pattern=""
 genome_file=""
 bwa_algorithm=""
-case "$dataset" in
-"cdna")
-    file_pattern=${cdna}
-    ;;
-"cds")
-    file_pattern=${cds}
-    ;;    
-"pep")
-    file_pattern=${pep}
-    ;;
-"ncrna")
-    file_pattern=${ncrna}
-    ;;
-"transcriptome_joined")
-    file_pattern=${transcriptome_joined}
-    ;;
-"dna")
-    file_pattern=${genome}
-    genome_file=$organism${genome}
-    bwa_algorithm=${ALGO_GENOME}
-    ;;
-*)
-    ;;
-esac
+file_pattern=$DATASETS[$dataset]
 
-FASTA_FILES="$genome_file"
-[ "$dataset" != "dna" ] && FASTA_FILES=`ls $datasets_fasta_dir | grep $file_pattern`
+[ "${GENOME[@]}" =~ "${dataset}" ] && bwa_algorithm=${ALGO_GENOME}
+
+FASTA_FILES=`ls $datasets_fasta_dir | grep $file_pattern`
 
 echo "Dataset File pattern: $file_pattern" | tee -a $log
 # run index command
