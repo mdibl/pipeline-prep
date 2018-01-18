@@ -42,13 +42,14 @@ data_source=$1
 source_version=$2
 tool_version=$TOOL_VERSION
 index_file_prefix=""
+this_reference_file="$data_source-reference.csv"
 
-if [ ! -f $REFERENCE_FILE ] 
+if [ ! -f $this_reference_file ] 
 then
-   echo "ERROR: $REFERENCE_FILE missing on `uname -n` under `pwd`"
+   echo "ERROR: $this_reference_file missing on `uname -n` under `pwd`"
    exit 1
 fi
-for line in  `cat $REFERENCE_FILE | grep $data_source | grep $dataset`
+for line in  `cat $this_reference_file | grep $data_source | grep $dataset`
 do
        IFS=', ' read -r -a fields <<< "$line"
        [ "${fields[3]}" = $dataset ] && index_file_prefix=${fields[5]}
