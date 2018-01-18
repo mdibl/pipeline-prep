@@ -1,0 +1,15 @@
+tool,source,organism,reference_target,reference_target_type,index_prefix
+bwa,wormbase,c_elegans.PRJNA13758,genomic,genome,bwa-wormbase-genomic
+bwa,wormbase,c_elegans.PRJNA13758,mRNA_transcripts,transcriptome,bwa-wormbase-mRNA_transcripts
+bwa,wormbase,c_elegans.PRJNA13758,ncRNA_transcripts,transcriptome,bwa-wormbase-ncRNA_transcripts
+bwa,wormbase,c_elegans.PRJNA13758,pseudogenic_transcripts,transcriptome,bwa-wormbase-pseudogenic_transcripts
+bwa,wormbase,c_elegans.PRJNA13758,transcriptome_joined,transcriptome,bwa-wormbase-transcriptome_joined
+bwa,wormbase,c_elegans.PRJNA13758,transposon_transcripts,transcriptome,bwa-wormbase-transposon_transcripts
+bwa,wormbase,c_elegans.PRJNA13758,transposons,transposons,bwa-wormbase-transposons
+bwa,wormbase,c_elegans.PRJNA13758,repeats,transposons,bwa-wormbase-repeats
+bwa,wormbase,c_elegans.PRJNA13758,potential_promotors,promotors,bwa-wormbase-potential_promotors
+bwa,wormbase,c_elegans.PRJNA275000,genomic,genome,bwa-wormbase-genomic
+bwa,wormbase,c_elegans.PRJNA275000,mRNA_transcripts,transcriptome,bwa-wormbase-mRNA_transcripts
+
+
+
