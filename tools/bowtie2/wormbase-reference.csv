@@ -1,0 +1,15 @@
+tool,source,organism,reference_target,reference_target_type,index_prefix
+bowtie2,wormbase,c_elegans.PRJNA13758,genomic,genome,bowtie2-wormbase-genomic
+bowtie2,wormbase,c_elegans.PRJNA13758,mRNA_transcripts,transcriptome,bowtie2-wormbase-mRNA_transcripts
+bowtie2,wormbase,c_elegans.PRJNA13758,ncRNA_transcripts,transcriptome,bowtie2-wormbase-ncRNA_transcripts
+bowtie2,wormbase,c_elegans.PRJNA13758,pseudogenic_transcripts,transcriptome,bowtie2-wormbase-pseudogenic_transcripts
+bowtie2,wormbase,c_elegans.PRJNA13758,transcriptome_joined,transcriptome,bowtie2-wormbase-transcriptome_joined
+bowtie2,wormbase,c_elegans.PRJNA13758,transposon_transcripts,transcriptome,bowtie2-wormbase-transposon_transcripts
+bowtie2,wormbase,c_elegans.PRJNA13758,transposons,transposons,bowtie2-wormbase-transposons
+bowtie2,wormbase,c_elegans.PRJNA13758,repeats,transposons,bowtie2-wormbase-repeats
+bowtie2,wormbase,c_elegans.PRJNA13758,potential_promotors,promotors,bowtie2-wormbase-potential_promotors
+bowtie2,wormbase,c_elegans.PRJNA275000,genomic,genome,bowtie2-wormbase-genomic
+bowtie2,wormbase,c_elegans.PRJNA275000,mRNA_transcripts,transcriptome,bowtie2-wormbase-mRNA_transcripts
+
+
+
