@@ -33,8 +33,8 @@ Each tool is a directory under tools  and each directory contains the following 
 
 ### The Data Sources Directory
 
-Each data source is config file (tool.cfg) under data_sources/  and each config file contains the
-Mapping between datasets and the file format 
+Each data source is config file (tool.cfg) under data_sources/  - each config file contains the
+Mapping between datasets and the file format and 
 
 ## Automate Pre-indexing step
 
