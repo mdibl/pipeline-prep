@@ -21,7 +21,18 @@ The root directory of the project contains two main diretories:
 
  * tools
  * data_sources
- 
+
+### The Data Sources Directory
+
+Each data source is config file (tool.cfg) under data_sources/  - Each config file contains the following 
+global environment variables:
+  1) DATASETS - Mapping between each dataset and its file format 
+  2) GENOME - AN ARRAY of the names of datasets that are genomic (the whole genome) - used as a flag for indexing options
+  3) DATA_SOURCE - name of the data source
+  4) ORGANISMS - list of organism as provived (datasets are stored by organisms)
+  5) and more
+  
+
 ### The Tools Directory
 
 Each tool is a directory under tools  and each directory contains the following files:
@@ -31,10 +42,7 @@ Each tool is a directory under tools  and each directory contains the following 
 3)	Refeence.csv file mapping tool to datasets
 4)	The Index shell script to setup and index datasets
 
-### The Data Sources Directory
 
-Each data source is config file (tool.cfg) under data_sources/  - each config file contains the
-Mapping between datasets and the file format and 
 
 ## Automate Pre-indexing step
 
