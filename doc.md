@@ -5,8 +5,10 @@ Pipeline-prep project's goal is in two folds - first creates a set reusable modu
 The goals :
   1) Pre-Indexing reference genome/transcripome
   2) Automate Pre-indexing step
+  ```
     a) Create New Data version Index trigger
     b) Create New Tool version Index trigger
+  ```
   3) Pre-processing the reads.
   
 
