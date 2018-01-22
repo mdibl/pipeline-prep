@@ -21,6 +21,9 @@ The root directory of the project contains two main diretories:
 
  * tools
  * data_sources
+ 
+  See:
+     [<img src="workflow.pdf">](workflow.pdf)
 
 ### The Data Sources Directory
 
