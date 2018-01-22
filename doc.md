@@ -6,8 +6,8 @@ The goals :
   1) Pre-Indexing reference genome/transcripome
   2) Automate Pre-indexing step
   ```
-    a) Create New Data version Index trigger
-    b) Create New Tool version Index trigger
+    a) Create a trigger to index a New Data version 
+    b) Create a trigger to index a New Tool version 
   ```
   3) Pre-processing the reads.
   
