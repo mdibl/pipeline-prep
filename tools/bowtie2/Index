@@ -71,7 +71,6 @@ log=$LOGS_BASE/$SCRIPT_NAME.$source_version.$organism-$dataset.$tool_version.log
 rm -rf $log
 touch $log
 
-
 echo "*************************************************" | tee -a $log
 echo "Generating $tool_version indexes for $source_version $organism's $dataset"  | tee -a $log
 echo "*************************************************" | tee -a $log
@@ -97,44 +96,28 @@ then
    echo "ERROR: Failed to create $index_dir"
    exit 1
 fi
+
 echo "Tool-version: $tool_version" | tee -a $log
 echo "Path to tool exec : $tool_exec" | tee -a $log
 echo "Source-version: $source_version" | tee -a $log
 echo "Organism: $organism" | tee -a $log
 echo "Dataset: $dataset" | tee -a $log
 echo "Indexes Directory: $index_dir" | tee -a $log
+echo "Indexes File Prefix: $index_file_prefix" | tee -a $log
 echo "Dataset Directory: $datasets_fasta_dir" | tee -a $log
 source ./$source_config
-
 file_pattern=""
+genome_file=""
 
-case "$dataset" in
-"cdna")
-    file_pattern=${cdna}
-    ;;
-"cds")
-    file_pattern=${cds}
-    ;;    
-"pep")
-    file_pattern=${pep}
-    ;;
-"ncrna")
-    file_pattern=${ncrna}
-    ;;
-
-"dna")
-    file_pattern=${genome}
-    ;;
-*)
-    ;;
-esac
-
+file_pattern=$DATASETS[$dataset]
 FASTA_FILES=`ls $datasets_fasta_dir | grep $file_pattern`
+
 echo "Dataset File pattern: $file_pattern" | tee -a $log
 # run index command
 reference_in=""
 cd $index_dir
 echo "Running indexes from `pwd`" | tee -a $log
+
 for target_file  in $FASTA_FILES
 do 
    if [ "$reference_in" = "" ]
@@ -145,9 +128,7 @@ do
    fi
 done
 
-#bt2_base="$tool_version.$source_version.$organism-$dataset"
-bt2_base="$tool_name-$data_source-$dataset"
-index_cmd="$tool_exec -f $reference_in $bt2_base"
+index_cmd="$tool_exec -f $reference_in $index_file_prefix"
 echo "Dataset file: $reference_in" | tee -a $log
 echo "Cmd: $index_cmd" | tee -a $log
 $index_cmd 2>&1 | tee -a $log
