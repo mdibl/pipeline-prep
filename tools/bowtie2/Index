@@ -87,6 +87,12 @@ then
    echo "ERROR: $tool_exec executable missing" | tee -a $log
    exit 1
 fi
+#If this dataset has already been indexed continue
+if [ -d $index_dir ]
+then
+   echo "SKIPPING: $index_dir already exists" | tee -a $log
+   exit 0 
+fi
 #
 # Create index directory if not exists
 #
