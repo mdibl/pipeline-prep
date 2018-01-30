@@ -9,8 +9,8 @@
 # 2) source_version
 # 3) organism
 # 4) dataset_name
-# 5) tool version <bowtie2-v2.3.3.1> default current verion
-# 6) tool_name
+# 5) tool_name
+# 6) tool version <bowtie2-v2.3.3.1> default current verion
 #
 
 SCRIPT_NAME=`basename $0`
