@@ -30,7 +30,7 @@ tool_config=$tool_name.cfg
 
 if [ ! -f $tool_config ]
 then
-  echo "ERROR: bwa.cfg file missing from `pwd`"
+  echo "ERROR: $tool_config file missing from `pwd`"
   exit 1
 fi
 
@@ -103,12 +103,12 @@ then
 fi
 echo "Tool-version: $tool_version" | tee -a $log
 echo "Path to tool exec : $tool_exec" | tee -a $log
-echo "Source-version: $source_version" | tee -a $log
+echo "Data Source version: $source_version" | tee -a $log
 echo "Organism: $organism" | tee -a $log
 echo "Dataset: $dataset" | tee -a $log
 echo "Indexes Directory: $index_dir" | tee -a $log
 echo "Indexes File Prefix: $index_file_prefix" | tee -a $log
-echo "Dataset Directory: $datasets_fasta_dir" | tee -a $log
+echo "Input Dataset Directory: $datasets_fasta_dir" | tee -a $log
 source ./$source_config
 file_pattern=""
 genome_file=""
