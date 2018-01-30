@@ -10,7 +10,7 @@
 # 3) organism
 # 4) dataset_name
 # 5) tool name
-# 5) tool version <v0.7.16 | v0.7.17> default current verion
+# 6) tool version <bwa-v0.7.16 | bwa-v0.7.17> default current verion
 #
 
 SCRIPT_NAME=`basename $0`
