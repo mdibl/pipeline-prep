@@ -1,0 +1,15 @@
+tool,source,organism,reference_target,reference_target_type,index_prefix
+hisat2,wormbase,c_elegans.PRJNA13758,genomic,genome,hisat2-wormbase-genomic
+hisat2,wormbase,c_elegans.PRJNA13758,mRNA_transcripts,transcriptome,hisat2-wormbase-mRNA_transcripts
+hisat2,wormbase,c_elegans.PRJNA13758,ncRNA_transcripts,transcriptome,hisat2-wormbase-ncRNA_transcripts
+hisat2,wormbase,c_elegans.PRJNA13758,pseudogenic_transcripts,transcriptome,hisat2-wormbase-pseudogenic_transcripts
+hisat2,wormbase,c_elegans.PRJNA13758,transcriptome_joined,transcriptome,hisat2-wormbase-transcriptome_joined
+hisat2,wormbase,c_elegans.PRJNA13758,transposon_transcripts,transcriptome,hisat2-wormbase-transposon_transcripts
+hisat2,wormbase,c_elegans.PRJNA13758,transposons,transposons,hisat2-wormbase-transposons
+hisat2,wormbase,c_elegans.PRJNA13758,repeats,transposons,hisat2-wormbase-repeats
+hisat2,wormbase,c_elegans.PRJNA13758,potential_promotors,promotors,hisat2-wormbase-potential_promotors
+hisat2,wormbase,c_elegans.PRJNA275000,genomic,genome,hisat2-wormbase-genomic
+hisat2,wormbase,c_elegans.PRJNA275000,mRNA_transcripts,transcriptome,hisat2-wormbase-mRNA_transcripts
+
+
+
