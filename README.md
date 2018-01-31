@@ -5,8 +5,8 @@
  a software tool, or a file format manipulation. These steps are applied to the primary data
  (generated from an experimental assay) to produce visualizable data" ~ENCODE
  ```
- Pipeline-prep repos is a set of scripts and configuration used to execute the first two steps of a given data pipeline.
- These steps include  Pre-Indexing reference genome/transcripome and Pre-processing the reads.
+ Pipeline-prep repos is a set of scripts and configuration used to 
+ execute the first step of a given data pipeline - Which is Pre-Indexing reference genome/transcripome.
  
  
   ## Data Pipeline Steps
