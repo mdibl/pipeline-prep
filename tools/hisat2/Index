@@ -38,12 +38,27 @@ fi
 
 source ./$tool_config
 
-
 organism=$3
 dataset=$4
 data_source=$1
 source_version=$2
-tool_version=$5
+tool_version=$TOOL_VERSION
+index_file_prefix=""
+this_reference_file="$data_source-reference.csv"
+
+if [ ! -f $this_reference_file ] 
+then
+   echo "ERROR: $this_reference_file missing on `uname -n` under `pwd`"
+   exit 1
+fi
+for line in  `cat $this_reference_file | grep $data_source | grep $dataset`
+do
+       IFS=', ' read -r -a fields <<< "$line"
+       [ "${fields[3]}" = $dataset ] && index_file_prefix=${fields[5]}
+done
+
+[ $# -gt 5 ] && tool_version=$6
+[ $# -gt 6 ] && index_file_prefix=$7
 
 tool_index_base=$INDEX_BASE/$tool_version
 tool_exec=$PACKAGE_INSTALL_BASE/$tool_version/$TOOL_INDEX_EXEC
@@ -56,7 +71,6 @@ log=$LOGS_BASE/$SCRIPT_NAME.$source_version.$organism-$dataset.$tool_version.log
 
 rm -rf $log
 touch $log
-
 echo "*************************************************" | tee -a $log
 echo "Generating $tool_version indexes for $source_version $organism's $dataset"  | tee -a $log
 echo "*************************************************" | tee -a $log
