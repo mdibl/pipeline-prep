@@ -30,14 +30,14 @@ fi
 tool_name=$5
 tool_config=$tool_name.cfg
 
-
-if [ ! -f $tool_name.cfg ]
+if [ ! -f $tool_config ]
 then
-  echo "ERROR: $tool_name.cfg file missing from `pwd`"
+  echo "ERROR: $tool_config file missing from `pwd`"
   exit 1
 fi
 
-source ./$tool_name.cfg
+source ./$tool_config
+
 
 organism=$3
 dataset=$4
