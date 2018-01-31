@@ -87,6 +87,12 @@ then
    echo "ERROR: $tool_exec executable missing" | tee -a $log
    exit 1
 fi
+#If this dataset has already been indexed continue
+if [ -d $index_dir ]
+then
+   echo "SKIPPING: $index_dir already exists" | tee -a $log
+   exit 0 
+fi
 #
 # Create index directory if not exists
 #
@@ -98,42 +104,25 @@ then
 fi
 echo "Tool-version: $tool_version" | tee -a $log
 echo "Path to tool exec : $tool_exec" | tee -a $log
-echo "Source-version: $source_version" | tee -a $log
+echo "Data Source version: $source_version" | tee -a $log
 echo "Organism: $organism" | tee -a $log
 echo "Dataset: $dataset" | tee -a $log
 echo "Indexes Directory: $index_dir" | tee -a $log
-echo "Dataset Directory: $datasets_fasta_dir" | tee -a $log
+echo "Indexes File Prefix: $index_file_prefix" | tee -a $log
+echo "Input Dataset Directory: $datasets_fasta_dir" | tee -a $log
+
 source ./$source_config
 
 file_pattern=""
-
-case "$dataset" in
-"cdna")
-    file_pattern=${cdna}
-    ;;
-"cds")
-    file_pattern=${cds}
-    ;;    
-"pep")
-    file_pattern=${pep}
-    ;;
-"ncrna")
-    file_pattern=${ncrna}
-    ;;
-
-"dna")
-    file_pattern=${genome}
-    ;;
-*)
-    ;;
-esac
-
+file_pattern=$DATASETS[$dataset]
 FASTA_FILES=`ls $datasets_fasta_dir | grep $file_pattern`
+
 echo "Dataset File pattern: $file_pattern" | tee -a $log
 # run index command
 reference_in=""
 cd $index_dir
 echo "Running indexes from `pwd`" | tee -a $log
+
 for target_file  in $FASTA_FILES
 do 
    if [ "$reference_in" = "" ]
