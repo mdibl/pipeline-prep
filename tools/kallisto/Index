@@ -8,29 +8,33 @@
 # 2) source_version
 # 3) organism
 # 4) dataset_name
-# 5) tool version <kallisto_linux-v0.43.1> default current verion
-# 6) tool_name
-#
+# 5) tool_name
+# 6) tool version <kallisto_linux-v0.43.1> default current verion
+# 7) index prefix -- default <tool_name-data_source_name-dataset_name>
 
 SCRIPT_NAME=`basename $0`
 cd `dirname $0`
 echo "Running script from `pwd`"
 
-if [ $# -lt 6 ]
+if [ $# -lt 5 ]
 then 
-  echo "Usage: ./$SCRIPT_NAME  source source-version organism dataset tool-version tool_name"
-  echo "Example: ./$SCRIPT_NAME ensembl ensembl-91 danio_rerio cdna kallisto_linux-v0.43.1 kallisto"
+  echo "Usage: ./$SCRIPT_NAME  source source-version organism dataset tool_name [tool-version]"
+  echo "Example: ./$SCRIPT_NAME ensembl ensembl-91 danio_rerio cdna hisat2 [hisat2-2.1.0][hisat2-ensembl-cdna]"
+  echo "The default tool-version is the current version of the tool"
+  echo "The default index-prefix is tool_name-data_source_name-dataset"
   exit 1
 fi
-tool_name=$6
+#Check that tool_name.cfg exists 
+tool_name=$5
+tool_config=$tool_name.cfg
 
-if [ ! -f $tool_name.cfg ]
+if [ ! -f $tool_config ]
 then
-  echo "ERROR: $tool_name.cfg file missing from `pwd`"
+  echo "ERROR: $tool_config file missing from `pwd`"
   exit 1
 fi
+source ./$tool_config
 
-source ./$tool_name.cfg
 
 organism=$3
 dataset=$4
