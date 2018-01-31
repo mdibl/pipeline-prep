@@ -1,0 +1,15 @@
+tool,source,organism,reference_target,reference_target_type,index_prefix
+kallisto,wormbase,c_elegans.PRJNA13758,genomic,genome,kallisto-wormbase-genomic
+kallisto,wormbase,c_elegans.PRJNA13758,mRNA_transcripts,transcriptome,kallisto-wormbase-mRNA_transcripts
+kallisto,wormbase,c_elegans.PRJNA13758,ncRNA_transcripts,transcriptome,kallisto-wormbase-ncRNA_transcripts
+kallisto,wormbase,c_elegans.PRJNA13758,pseudogenic_transcripts,transcriptome,kallisto-wormbase-pseudogenic_transcripts
+kallisto,wormbase,c_elegans.PRJNA13758,transcriptome_joined,transcriptome,kallisto-wormbase-transcriptome_joined
+kallisto,wormbase,c_elegans.PRJNA13758,transposon_transcripts,transcriptome,kallisto-wormbase-transposon_transcripts
+kallisto,wormbase,c_elegans.PRJNA13758,transposons,transposons,kallisto-wormbase-transposons
+kallisto,wormbase,c_elegans.PRJNA13758,repeats,transposons,kallisto-wormbase-repeats
+kallisto,wormbase,c_elegans.PRJNA13758,potential_promotors,promotors,kallisto-wormbase-potential_promotors
+kallisto,wormbase,c_elegans.PRJNA275000,genomic,genome,kallisto-wormbase-genomic
+kallisto,wormbase,c_elegans.PRJNA275000,mRNA_transcripts,transcriptome,kallisto-wormbase-mRNA_transcripts
+
+
+
