@@ -25,6 +25,9 @@ then
    echo "Configuration.cfg main configuration file is missing from `pwd`"
    exit 1
 fi
+#Get path to EXTERNAL_DATA_BASE,FASTA_FILES_BASE,INDEX_BASE,EXTERNAL_TOOLS_BASE,LOGS_BASE
+# from the main config file
+source ./Configuration.cfg
 
 # Path to tool indexer base - relative to the root of this script
 if [ ! -d $tool_base ]
