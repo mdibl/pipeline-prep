@@ -41,14 +41,14 @@ echo "Creating indexes for $TOOL_VERSION"| tee -a $LOG_FILE
 echo "**********  *******************************"| tee -a $LOG_FILE
 echo date | tee -a $LOG_FILE
 echo "Tool Version: $TOOL_VERSION"
-echo "Reference config files: $REFERENCE_FILE "
 ## I need to store 
-for reference_config in REFERENCE_FILE
+for data_source in REFERENCE_FILE
 do
+    reference_config=$REFERENCE_FILE[$data_source]
     [ ! -f $reference_config ] && continue
-    echo "Indexind datasets in  : $reference_config"
-    
-    for line in  `cat $REFERENCE_FILE`
+    echo "Indexing datasets in  : $reference_config"
+    ##get the current release for this data source 
+    for line in  `cat $reference_config`
     do
        IFS=', ' read -r -a fields <<< "$line"
        tool_name=${fields[0]}
@@ -57,6 +57,7 @@ do
        index_prefix=${fields[5]}
        echo "##" | tee -a $LOG_FILE
        date | tee -a $LOG_FILE
+      
        echo "Generating $tool Indexes for $DATA_VERSION $organism.$dataset dataset" | tee -a $LOG_FILE
        echo "Running $tool_name indexer from `pwd`" | tee -a $LOG_FILE
        indexer_cmd="Index $SHORT_NAME $DATA_VERSION $organism $dataset $tool_name $TOOL_VERSION $index_prefix"
