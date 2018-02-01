@@ -18,7 +18,14 @@ then
   echo "Example: ./$SCRIPT_NAME bwa"
   exit 1
 fi
-tool_base=$1
+tool_name=$1
+tool_base=tools/$tool_name
+if [ -f Configuration.cfg ]
+then
+   echo "Configuration.cfg main configuration file is missing from `pwd`"
+   exit 1
+fi
+
 # Path to tool indexer base - relative to the root of this script
 if [ ! -d $tool_base ]
 then
