@@ -1,36 +1,30 @@
 tool,source,organism,reference_target,reference_target_type,index_prefix
 bowtie2,ensembl,caenorhabditis_elegans,dna,genome,bowtie2-ensembl-dna
-bowtie2,ensembl,caenorhabditis_elegans,genome,genome,bowtie2-ensembl-genome
 bowtie2,ensembl,caenorhabditis_elegans,cdna,transcriptome,bowtie2-ensembl-cdna
 bowtie2,ensembl,caenorhabditis_elegans,ncrna,transcriptome,bowtie2-ensembl-ncrna
 bowtie2,ensembl,caenorhabditis_elegans,transcriptome_joined,transcriptome,bowtie2-ensembl-transcriptome_joined
 
 bowtie2,ensembl,danio_rerio,dna,genome,bowtie2-ensembl-dna
-bowtie2,ensembl,danio_rerio,genome,genome,bowtie2-ensembl-genome
 bowtie2,ensembl,danio_rerio,cdna,transcriptome,bowtie2-ensembl-cdna
 bowtie2,ensembl,danio_rerio,ncrna,transcriptome,bowtie2-ensembl-ncrna
 bowtie2,ensembl,danio_rerio,transcriptome_joined,transcriptome,bowtie2-ensembl-transcriptome_joined
 
 bowtie2,ensembl,drosophila_melanogaster,dna,genome,bowtie2-ensembl-dna
-bowtie2,ensembl,drosophila_melanogaster,genome,bowtie2-ensembl-genome
 bowtie2,ensembl,drosophila_melanogaster,cdna,transcriptome,bowtie2-ensembl-cdna
 bowtie2,ensembl,drosophila_melanogaster,ncrna,transcriptome,bowtie2-ensembl-ncrna
 bowtie2,ensembl,drosophila_melanogaster,transcriptome_joined,transcriptome,bowtie2-ensembl-transcriptome_joined
 
 bowtie2,ensembl,homo_sapiens,dna,genome,bowtie2-ensembl-dna
-bowtie2,ensembl,homo_sapiens,genome,bowtie2-ensembl-genome
 bowtie2,ensembl,homo_sapiens,cdna,transcriptome,bowtie2-ensembl-cdna
 bowtie2,ensembl,homo_sapiens,ncrna,transcriptome,bowtie2-ensembl-ncrna
 bowtie2,ensembl,homo_sapiens,transcriptome_joined,transcriptome,bowtie2-ensembl-transcriptome_joined
 
 bowtie2,ensembl,mus_musculus,dna,genome,bowtie2-ensembl-dna
-bowtie2,ensembl,mus_musculus,genome,bowtie2-ensembl-genome
 bowtie2,ensembl,mus_musculus,cdna,transcriptome,bowtie2-ensembl-cdna
 bowtie2,ensembl,mus_musculus,ncrna,transcriptome,bowtie2-ensembl-ncrna
 bowtie2,ensembl,mus_musculus,transcriptome_joined,transcriptome,bowtie2-ensembl-transcriptome_joined
 
 bowtie2,ensembl,saccharomyces_cerevisiae,dna,genome,bowtie2-ensembl-dna
-bowtie2,ensembl,saccharomyces_cerevisiae,genome,bowtie2-ensembl-genome
 bowtie2,ensembl,saccharomyces_cerevisiae,cdna,transcriptome,bowtie2-ensembl-cdna
 bowtie2,ensembl,saccharomyces_cerevisiae,ncrna,transcriptome,bowtie2-ensembl-ncrna
 bowtie2,ensembl,saccharomyces_cerevisiae,transcriptome_joined,transcriptome,bowtie2-ensembl-transcriptome_joined
