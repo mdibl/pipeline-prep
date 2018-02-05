@@ -35,7 +35,6 @@ then
   echo "ERROR: $tool_config file missing from `pwd`"
   exit 1
 fi
-
 source ./$tool_config
 
 
@@ -135,8 +134,13 @@ do
       reference_in="$reference_in,$datasets_fasta_dir/$target_file"
    fi
 done
+index_options=""
 
-index_cmd="$tool_exec -f $reference_in $index_file_prefix"
+if [[ " ${GENOME[@]} " =~ " ${dataset} " ]]; then
+   index_options=$ALGO_GENOME
+fi
+
+index_cmd="$tool_exec $index_options -f $reference_in $index_file_prefix"
 echo "Dataset file: $reference_in" | tee -a $log
 echo "Cmd: $index_cmd" | tee -a $log
 $index_cmd 2>&1 | tee -a $log
