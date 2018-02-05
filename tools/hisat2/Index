@@ -132,9 +132,14 @@ do
       reference_in="$reference_in,$datasets_fasta_dir/$target_file"
    fi
 done
+index_options=""
 
+for genome in ${GENOME}
+do
+    [ "$genome" = $dataset ] && index_options=${ALGO_GENOME} 
+done
 bt2_base="$tool_name-$data_source-$dataset"
-index_cmd="$tool_exec -f $reference_in $bt2_base"
+index_cmd="$tool_exec $index_options -f $reference_in $bt2_base"
 echo "Dataset file: $reference_in" | tee -a $log
 echo "Cmd: $index_cmd" | tee -a $log
 $index_cmd 2>&1 | tee -a $log
