@@ -26,6 +26,7 @@ data_source_name=$1
 ##Path relative to this script base
 main_config=Configuration.cfg
 data_source_config=data_sources/$data_source_name.cfg
+indexers_base=tools
 
 ##
 if [ ! -f $main_config ]
@@ -46,6 +47,19 @@ source ./$data_source_config
 ##Set path to logs
 LOG_FILE="${LOGS_BASE}/$SCRIPT_NAME.$data_source_name.log"
 #
+##Set Path to input reference data - or exit if can't
+# get current version of the data
+CURRENT_VERSION_FILE=${EXTERNAL_DATA_BASE}/$data_source_name/current_release_NUMBER 
+if [  ! -f $CURRENT_VERSION_FILE ];then
+ echo "ERROR: missing $CURRENT_VERSION_FILE"
+ exit 1
+ fi
+
+CURRENT_VERSION=`cat $CURRENT_VERSION_FILE`
+DATA_DIR=$DATA_SOURCE-$CURRENT_VERSION
+REFERENCE_BASE=${SCRATCH_BASE}/$DATA_DIR
+
+#
 ## Check that the current version of this data source
 # as defined in $data_source_config - was uncompressesd where expected
 #
@@ -61,20 +75,18 @@ echo "**********              *******************" | tee -a $LOG_FILE
 echo "Running indexes for $DATA_DIR"| tee -a $LOG_FILE
 echo "**********  *******************************"| tee -a $LOG_FILE
 echo "Alignment Tools: $ALIGN_INDEX_TOOLS"
-echo "Index Script Base: $INDEX_SCRIPT_BASE"
 echo "Reference config file: $REFERENCE_FILE "
-
-if [ ! -d $INDEX_SCRIPT_BASE ]
+#
+## indexers_base is relative to this script
+# or under the root directory of this repos
+if [ ! -d $indexers_base ]
 then
-   echo "ERROR: $INDEX_SCRIPT_BASE directory missing"
+   echo "ERROR: $indexers_base directory missing"
    exit
 fi
-
-cd $INDEX_SCRIPT_BASE
+cd $indexers_base
 WORKING_DIR=`pwd`
-echo "Based directory for tool index scripts : $INDEX_SCRIPT_BASE"
-
-for tool in $ALIGN_INDEX_TOOLS
+for tool in $ALIGN_TOOLS_LIST
 do
     TOOL_BASE=$WORKING_DIR/$tool
     TOOL_CONFIG=$tool.cfg
