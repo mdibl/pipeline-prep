@@ -14,17 +14,23 @@ cd `dirname $0`
 SCRIPT_NAME=`basename $0`
 WORKING_DIR=`pwd`
 
-if [ $# -lt 2 ]
+
+if [ $# -lt 1 ]
 then
-  echo "Usage: ./$SCRIPT_NAME data_source_name data_source_config.cfg"
-  echo "Example: ./$SCRIPT_NAME ensembl  ensembl.cfg"
+  echo "Usage: ./$SCRIPT_NAME data_source_name "
+  echo "Example: ./$SCRIPT_NAME ensembl "
   exit 1
 fi
-data_source_config=$1/$2
+data_source_name=$1
 
-if [ ! -f Configuration ]
+##Path relative to this script base
+main_config=Configuration.cfg
+data_source_config=data_sources/$data_source_name.cfg
+
+##
+if [ ! -f $main_config ]
 then
-  echo "ERROR: Configuration file missing from `pwd`"
+  echo "ERROR: $main_config file missing from `pwd`"
   exit 1 
 fi
 if [ ! -f $data_source_config ]
@@ -32,27 +38,27 @@ then
   echo "ERROR: $data_source_config file missing from `pwd`"
   exit 1
 fi
-
-source ./Configuration
+source ./$main_config
 source ./$data_source_config
 
-LOG_FILE="${DOWNLOADS_LOG_DIR}/$SCRIPT_NAME.$SHORT_NAME.log"
-RELEASE_FILE="$EXTERNAL_DATA_BASE/$SHORT_NAME/current_release_NUMBER"
-
-if [ ! -f $RELEASE_FILE ]
+[ ! -d $LOGS_BASE ] && mkdir -p $LOGS_BASE
+#
+##Set path to logs
+LOG_FILE="${LOGS_BASE}/$SCRIPT_NAME.$data_source_name.log"
+#
+## Check that the current version of this data source
+# as defined in $data_source_config - was uncompressesd where expected
+#
+if [ ! -d $REFERENCE_BASE ]
 then
-  echo "ERROR $RELEASE_FILE file missing on `uname -n`"
+  echo "ERROR $REFERENCE_BASE missing on `uname -n`"
   exit 1
 fi
-
-RELEASE=`cat $RELEASE_FILE`
-DATA_VERSION=$SHORT_NAME-$RELEASE
-
 rm -rf $LOG_FILE
 touch $LOG_FILE
 date | tee -a $LOG_FILE
 echo "**********              *******************" | tee -a $LOG_FILE
-echo "Running indexes for $DATA_VERSION"| tee -a $LOG_FILE
+echo "Running indexes for $DATA_DIR"| tee -a $LOG_FILE
 echo "**********  *******************************"| tee -a $LOG_FILE
 echo "Alignment Tools: $ALIGN_INDEX_TOOLS"
 echo "Index Script Base: $INDEX_SCRIPT_BASE"
