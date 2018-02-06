@@ -76,10 +76,8 @@ tool indexes path,to index options.
 
 
 
-
-
 ## Automate Pre-indexing step
 
-## Pre-processing the reads
+
 
 
