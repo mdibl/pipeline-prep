@@ -5,7 +5,7 @@
 # Date: January 2018
 #
 # This script is a warpper to call
-# a script that pre-index datasets for
+# a script that pre-indexes datasets for
 # each alignment tool
 #
 
