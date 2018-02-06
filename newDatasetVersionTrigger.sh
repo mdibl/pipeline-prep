@@ -56,8 +56,8 @@ if [  ! -f $CURRENT_VERSION_FILE ];then
  fi
 
 CURRENT_VERSION=`cat $CURRENT_VERSION_FILE`
-DATA_DIR=$DATA_SOURCE-$CURRENT_VERSION
-REFERENCE_BASE=${SCRATCH_BASE}/$DATA_DIR
+DATA_DIR=$data_source_name-$CURRENT_VERSION
+REFERENCE_BASE=${FASTA_FILES_BASE}/$DATA_DIR
 
 #
 ## Check that the current version of this data source
@@ -72,16 +72,16 @@ rm -rf $LOG_FILE
 touch $LOG_FILE
 date | tee -a $LOG_FILE
 echo "**********              *******************" | tee -a $LOG_FILE
-echo "Running indexes for $DATA_DIR"| tee -a $LOG_FILE
-echo "**********  *******************************"| tee -a $LOG_FILE
-echo "Alignment Tools: $ALIGN_INDEX_TOOLS"
-echo "Reference config file: $REFERENCE_FILE "
+echo "Running indexes for $DATA_DIR" | tee -a $LOG_FILE
+echo "**********  *******************************" | tee -a $LOG_FILE
+echo "Alignment Tools: $ALIGN_INDEX_TOOLS" | tee -a $LOG_FILE
+echo "Reference config file: $REFERENCE_FILE "| tee -a $LOG_FILE
 #
 ## indexers_base is relative to this script
 # or under the root directory of this repos
 if [ ! -d $indexers_base ]
 then
-   echo "ERROR: $indexers_base directory missing"
+   echo "ERROR: $indexers_base directory missing" | tee -a $LOG_FILE
    exit
 fi
 cd $indexers_base
@@ -106,10 +106,10 @@ do
        index_prefix=${fields[5]}
        echo "##" | tee -a $LOG_FILE
        date | tee -a $LOG_FILE
-       echo "Generating $tool Indexes for $DATA_VERSION $organism.$dataset dataset" | tee -a $LOG_FILE
+       echo "Generating $tool Indexes for $DATA_DIR $organism.$dataset dataset" | tee -a $LOG_FILE
        echo "Running $tool_name indexer from `pwd`" | tee -a $LOG_FILE
-       indexer_cmd="Index $SHORT_NAME $DATA_VERSION $organism $dataset $tool_name $TOOL_VERSION $index_prefix"
-       echo "Command: ./$indexer_cmd"| tee -a $LOG_FILE 
+       indexer_cmd="Index $data_source_name $DATA_DIR $organism $dataset $tool_name $TOOL_VERSION $index_prefix"
+       echo "Command: $indexer_cmd" | tee -a $LOG_FILE 
        ./$indexer_cmd 2>&1 | tee -a $log
 
        date | tee -a $LOG_FILE
