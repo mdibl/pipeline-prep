@@ -24,16 +24,25 @@ then
   echo "The default tool-version is the current version of the tool"
   exit 1
 fi
-#Check that bwa.cfg exists 
 tool_name=$5
 tool_config=$tool_name.cfg
-
+##Set global environment variables
+#
+main_config=Configuration.cfg
+##
+if [ ! -f ../../$main_config ]
+then
+  echo "ERROR: ../../$main_config file missing"
+  exit 1 
+fi
+source ./../../$main_config
 if [ ! -f $tool_config ]
 then
   echo "ERROR: $tool_config file missing from `pwd`"
   exit 1
 fi
-
+##Set this tool's specific variables
+#
 source ./$tool_config
 
 organism=$3
@@ -61,7 +70,7 @@ done
 tool_index_base=$INDEX_BASE/$tool_version
 tool_exec=$PACKAGE_INSTALL_BASE/$tool_version/$TOOL_INDEX_EXEC
 index_dir=$tool_index_base/$source_version/$organism-$dataset
-datasets_fasta_dir=$FASTA_BASE/$source_version/$organism-$dataset
+datasets_fasta_dir=$FASTA_FILES_BASE/$source_version/$organism-$dataset
 
 source_config=../../data_sources/$data_source.cfg
 
