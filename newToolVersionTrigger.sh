@@ -6,7 +6,9 @@
 #
 # This script is a warpper to call
 # a script that pre-index datasets when
-# a new version of the tool is sinstalled
+# a new version of the tool is installed
+#
+# Input: tool name
 #
 cd `dirname $0`
 
