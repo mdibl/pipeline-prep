@@ -74,17 +74,6 @@ datasets_fasta_dir=$FASTA_FILES_BASE/$source_version/$organism-$dataset
 
 source_config=../../data_sources/$data_source.cfg
 
-log=$LOGS_BASE/$SCRIPT_NAME.$source_version.$organism-$dataset.$tool_version.log
-
-rm -rf $log
-touch $log
-
-echo "*************************************************" | tee -a $log
-echo "Generating $tool_version indexes for $source_version $organism's $dataset"  | tee -a $log
-echo "*************************************************" | tee -a $log
-echo "Date:`date`" | tee -a $log
-echo "ORGANIZATION:$ORGANIZATION" | tee -a $log 
-
 if [ ! -d $datasets_fasta_dir ]
 then
    echo "ERROR: directory $datasets_fasta_dir does not exists" | tee -a $log
@@ -110,6 +99,19 @@ then
    echo "ERROR: Failed to create $index_dir"
    exit 1
 fi
+
+log=$LOGS_BASE/$SCRIPT_NAME.$source_version.$organism-$dataset.$tool_version.log
+
+rm -rf $log
+touch $log
+
+echo "*************************************************" | tee -a $log
+echo "Generating $tool_version indexes for $source_version $organism's $dataset"  | tee -a $log
+echo "*************************************************" | tee -a $log
+echo "Date:`date`" | tee -a $log
+echo "ORGANIZATION:$ORGANIZATION" | tee -a $log 
+
+
 echo "Tool-version: $tool_version" | tee -a $log
 echo "Path to tool exec : $tool_exec" | tee -a $log
 echo "Data Source version: $source_version" | tee -a $log
