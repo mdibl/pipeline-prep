@@ -111,8 +111,6 @@ echo "Generating $tool_version indexes for $source_version $organism's $dataset"
 echo "*************************************************" | tee -a $log
 echo "Date:`date`" | tee -a $log
 echo "ORGANIZATION:$ORGANIZATION" | tee -a $log 
-
-
 echo "Tool-version: $tool_version" | tee -a $log
 echo "Path to tool exec : $tool_exec" | tee -a $log
 echo "Data Source version: $source_version" | tee -a $log
