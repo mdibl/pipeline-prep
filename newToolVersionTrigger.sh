@@ -20,30 +20,34 @@ then
   echo "Example: ./$SCRIPT_NAME bwa"
   exit 1
 fi
+##Path relative to this script base
+main_config=Configuration.cfg
 tool_name=$1
 tool_base=tools/$tool_name
-if [ -f Configuration.cfg ]
+tool_config=$tool_name.cfg
+
+if [ ! -f $main_config ]
 then
-   echo "Configuration.cfg main configuration file is missing from `pwd`"
+   echo "$main_config main configuration file is missing from `pwd`"
    exit 1
 fi
-#Get path to EXTERNAL_DATA_BASE,FASTA_FILES_BASE,INDEX_BASE,EXTERNAL_TOOLS_BASE,LOGS_BASE
-# from the main config file
-source ./Configuration.cfg
-
 # Path to tool indexer base - relative to the root of this script
 if [ ! -d $tool_base ]
 then
   echo "ERROR: $tool_base directory missing from `pwd`"
   exit 1
 fi
+#Get path to EXTERNAL_DATA_BASE,FASTA_FILES_BASE,INDEX_BASE,EXTERNAL_TOOLS_BASE,LOGS_BASE
+# from the main config file
+source ./$main_config
+
 cd $tool_base
-if [ ! -f $tool_base.cfg ]
+if [ ! -f $tool_config ]
 then
-  echo "ERROR $tool_base.cfg config file missing on `uname -n` under: `pwd`"
+  echo "ERROR $tool_config config file missing on `uname -n` under: `pwd`"
   exit 1
 fi
-source ./$tool_base.cfg
+source ./$tool_config.cfg
 LOG_FILE="${LOGS_BASE}/$SCRIPT_NAME.$TOOL_VERSION.log"
 rm -rf $LOG_FILE
 touch $LOG_FILE
