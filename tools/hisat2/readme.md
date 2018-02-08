@@ -10,7 +10,7 @@ The module was created to run either as a standalone application or as a downstr
 
 The information under the root directory of the module is organized as follow:
 
-- [Module Main Config File](#module-main-config-file)(bwa.cfg)
+- [Module Main Config File](#module-main-config-file)(hisat2.cfg)
 - [The Indexer](#the-indexer)(Index)
 - [Data Source Config Files](#data-source-config-files)(data_source_name-reference.cfg)
 
