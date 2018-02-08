@@ -67,7 +67,7 @@ then
   exit 1
 fi
 ##Set path to logs
-LOG_FILE="${LOGS_BASE}/$SCRIPT_NAME.$DATA_DIR.log"
+LOG_FILE=${LOGS_BASE}/$SCRIPT_NAME.$DATA_DIR.log
 #
 rm -rf $LOG_FILE
 touch $LOG_FILE
