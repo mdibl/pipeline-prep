@@ -103,7 +103,7 @@ then
    exit 1
 fi
 
-log=$LOGS_BASE/$SCRIPT_NAME.$source_version.$organism-$dataset.$tool_version.log
+log=$LOGS_BASE/$SCRIPT_NAME.$source_version.$organism.$dataset.$tool_version.log
 
 rm -rf $log
 touch $log
@@ -125,7 +125,6 @@ source ./$source_config
 file_pattern=""
 file_pattern=$DATASETS[$dataset]
 FASTA_FILES=`ls $datasets_fasta_dir | grep $file_pattern`
-echo "Dataset File pattern: $file_pattern" | tee -a $log
 # run index command
 reference_in=""
 cd $index_dir
@@ -150,6 +149,8 @@ bt2_base="$tool_name-$data_source-$dataset"
 index_cmd="$tool_exec $index_options -f $reference_in $bt2_base"
 echo "Dataset file: $reference_in" | tee -a $log
 echo "Cmd: $index_cmd" | tee -a $log
+echo "=== $tool_exec's Logs start Here ===" | tee -a $log
 $index_cmd 2>&1 | tee -a $log
+echo "=== $tool_exec's Logs end Here ===" | tee -a $log
 echo "Program Complete" | tee -a $log
 exit 0
