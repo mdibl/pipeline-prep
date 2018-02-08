@@ -1,6 +1,7 @@
 # About This Project
 
-Pipeline-prep project's goal is in two folds - first creates a set reusable modules used in running the first step of a given data pipeline then create and automation to run the pre-indexing step. 
+Pipeline-prep project's goal is in two folds - first creates a set reusable modules needed to pre-index the reference 
+used in a given data pipeline - second create an automation to run the pre-indexing step. 
 
 The goals :
   1) Pre-Indexing reference genome/transcripome
@@ -11,16 +12,18 @@ The goals :
   ```
   3) Pre-processing the reads.
   
-
-## Pre-Indexing reference genome/transcripome
-
 Indexes are created by tool version -> data source version > organism-dataset. Each data source specifies
 data format for a given dataset and each tool has its own sets of command to index the reference data.
 
-The root directory of the project contains two main diretories:
+# Package Organization
 
- * tools
- * data_sources
+The information under the root directory of the package is organized as follow:
+
+ * tools         --- root directory for alignment tools - each tool has a sub-directory
+ * data_sources  --- root directory for data sources - each data source has a config file
+ * Configuration.cfg.           --- The global config file for this package
+ * newDatasetVersionTrigger.sh  --- a trigger to run when a new release of a given dataset is detected
+ * newToolVersionTrigger.sh     --- a trigger to run when a new version of a given tool is detected
  
   See:
      [<img src="workflow.pdf">](workflow.pdf)
