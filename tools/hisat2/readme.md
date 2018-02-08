@@ -29,7 +29,9 @@ Each data source is a commas-separated file with the following six fields:
   4) Ref target -- the dataset name
   5) Ref target tpe -- [genome, transcriptome,proteome,...]
   6) Alias -- index prefix (format: tool-data_source-dataset)
- 
+
+## How To Run The Indexer
+
 ## About Hisat2 Index Program
 ```
   Usage: $path2/hisat2-build [options]* <reference_in> <ht2_base>
