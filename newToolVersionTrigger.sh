@@ -48,6 +48,7 @@ then
   exit 1
 fi
 source ./$tool_config.cfg
+
 LOG_FILE="${LOGS_BASE}/$SCRIPT_NAME.$TOOL_VERSION.log"
 rm -rf $LOG_FILE
 touch $LOG_FILE
@@ -62,7 +63,9 @@ for data_source in REFERENCE_FILE
 do
     reference_config=$REFERENCE_FILE[$data_source]
     [ ! -f $reference_config ] && continue
+    data_release_file=$EXTERNAL_DATA_BASE/$data_source/current_release_NUMBER
     echo "Indexing datasets in  : $reference_config"
+    DATA_VERSION=`cat $data_release_file`
     ##get the current release for this data source 
     for line in  `cat $reference_config`
     do
@@ -74,7 +77,7 @@ do
        echo "##" | tee -a $LOG_FILE
        date | tee -a $LOG_FILE
       
-       echo "Generating $tool Indexes for $DATA_VERSION $organism.$dataset dataset" | tee -a $LOG_FILE
+       echo "Generating $tool_name Indexes for $DATA_VERSION $organism.$dataset dataset" | tee -a $LOG_FILE
        echo "Running $tool_name indexer from `pwd`" | tee -a $LOG_FILE
        indexer_cmd="Index $SHORT_NAME $DATA_VERSION $organism $dataset $tool_name $TOOL_VERSION $index_prefix"
        echo "Command: ./$indexer_cmd"| tee -a $LOG_FILE 
