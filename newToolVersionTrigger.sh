@@ -63,10 +63,17 @@ for data_source in REFERENCE_FILE
 do
     reference_config=$REFERENCE_FILE[$data_source]
     [ ! -f $reference_config ] && continue
-    data_release_file=$EXTERNAL_DATA_BASE/$data_source/current_release_NUMBER
-    echo "Indexing datasets in  : $reference_config"
-    DATA_VERSION=`cat $data_release_file`
     ##get the current release for this data source 
+    data_release_file=$EXTERNAL_DATA_BASE/$data_source/current_release_NUMBER
+    if [ ! -f $data_release_file ]
+    then
+       echo "ERROR: Cna't detect current release for $data_source" | tee -a $LOG_FILE
+       echo "File missing: $data_release_file" | tee -a $LOG_FILE
+       continue
+    fi
+    data_release_number=`cat $data_release_file`
+    echo "Indexing datasets in  : $reference_config"
+    DATA_VERSION=$data_source-$data_release_number
     for line in  `cat $reference_config`
     do
        IFS=', ' read -r -a fields <<< "$line"
@@ -76,10 +83,9 @@ do
        index_prefix=${fields[5]}
        echo "##" | tee -a $LOG_FILE
        date | tee -a $LOG_FILE
-      
        echo "Generating $tool_name Indexes for $DATA_VERSION $organism.$dataset dataset" | tee -a $LOG_FILE
        echo "Running $tool_name indexer from `pwd`" | tee -a $LOG_FILE
-       indexer_cmd="Index $SHORT_NAME $DATA_VERSION $organism $dataset $tool_name $TOOL_VERSION $index_prefix"
+       indexer_cmd="Index $data_source $DATA_VERSION $organism $dataset $tool_name $TOOL_VERSION $index_prefix"
        echo "Command: ./$indexer_cmd"| tee -a $LOG_FILE 
        ./$indexer_cmd 2>&1 | tee -a $log
 
