@@ -44,9 +44,7 @@ source ./$data_source_config
 
 [ ! -d $LOGS_BASE ] && mkdir -p $LOGS_BASE
 #
-##Set path to logs
-LOG_FILE="${LOGS_BASE}/$SCRIPT_NAME.$data_source_name.log"
-#
+
 ##Set Path to input reference data - or exit if can't
 # get current version of the data
 CURRENT_VERSION_FILE=${EXTERNAL_DATA_BASE}/$data_source_name/current_release_NUMBER 
@@ -68,6 +66,9 @@ then
   echo "ERROR $REFERENCE_BASE missing on `uname -n`"
   exit 1
 fi
+##Set path to logs
+LOG_FILE="${LOGS_BASE}/$SCRIPT_NAME.$DATA_DIR.log"
+#
 rm -rf $LOG_FILE
 touch $LOG_FILE
 date | tee -a $LOG_FILE
