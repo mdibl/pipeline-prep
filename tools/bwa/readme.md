@@ -21,7 +21,7 @@ The information under the root directory of the module is organized as follow:
 
 ## About Bwa Index Program
 ```
-  bwa index <ref.fa>
+  Usage: bwa index <ref.fa>
 
 Where <ref.fa> is the absolute path to your reference file.
 This gives .pac, .bwt, .ann, .amb and .sa index files that all have the same ref.fa basename. 
