@@ -10,20 +10,21 @@ The goals :
     a) Create a trigger to index a New Data version 
     b) Create a trigger to index a New Tool version 
   ```
-  3) Pre-processing the reads.
   
 Indexes are created by tool version -> data source version > organism-dataset. Each data source specifies
-data format for a given dataset and each tool has its own sets of command to index the reference data.
+the format of each of its datasets and each tool has its own sets of command to index the reference data.
 
 # Package Organization
 
 The information under the root directory of the package is organized as follow:
 
- - tools: [Indexers Base](#indexers-base) --- root directory for alignment tools - each tool has a sub-directory
- - data_sources: [Data Sources Base](#data-sources-base) --- root directory for data sources - each data source has a config file
- * Configuration.cfg: [Package Main Config File](#package-main-config-file) --- The global config file for this package
- * newDatasetVersionTrigger.sh: [New Data Release Index Trigger](#new-data-release-index-trigger)  
- * newToolVersionTrigger.sh :  [New Tool Version Index Trigger](#new-tool-version-index-trigger)  
+ - [Package Main Config File](#package-main-config-file)(Configuration.cfg)
+ - [New Data Release Index Trigger](#new-data-release-index-trigger)(newDatasetVersionTrigger.sh)  
+ - [New Tool Version Index Trigger](#new-tool-version-index-trigger)(newToolVersionTrigger.sh)  
+ - [Data Sources Base](#data-sources-base)(data_sources) 
+ - [Indexers Base](#indexers-base)(tools)  
+
+ 
 
 
   See:
@@ -31,7 +32,7 @@ The information under the root directory of the package is organized as follow:
 
 ## Package Main Config File
 ## New Data Release Index Trigger
-
+## New Tool Version Index Trigger
 ## Data Sources Base
 
 Each data source is config file (tool.cfg) under data_sources/  - Each config file contains the following 
