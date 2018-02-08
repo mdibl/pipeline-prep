@@ -4,11 +4,11 @@ Pipeline-prep project's goal is in two folds - first creates a set reusable modu
 before running a given data pipeline - second create an automation to run the pre-indexing step. 
 
 The goals :
-  1) Pre-Indexing reference genome/transcripome
-  2) Automate Pre-indexing step
+  1) Create the process the Pre-Indexes the reference genome/transcripome for each alignment tool
+  2) Automate the Pre-indexing step
   ```
-    a) Create a trigger to index a New Data version 
-    b) Create a trigger to index a New Tool version 
+    a) Create a trigger to index the reference when a New Data version is detected
+    b) Create a trigger to index the reference when a New Tool version is detected
   ```
   
 Indexes are created by tool version -> data source version > organism-dataset. Each data source specifies
