@@ -4,7 +4,7 @@ Pipeline-prep project's goal is in two folds - first create a set reusable modul
 before running a given data pipeline - second create an automation to run the pre-indexing step. 
 
 The goals :
-  1) Create the process the Pre-Indexes the reference genome/transcripome for each alignment tool
+  1) For each alignment tool, create a stable process that Pre-Indexes the reference genome/transcripome 
   2) Automate the Pre-indexing step
   ```
     a) Create a trigger to index the reference when a New Data version is detected
