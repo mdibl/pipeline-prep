@@ -19,15 +19,18 @@ data format for a given dataset and each tool has its own sets of command to ind
 
 The information under the root directory of the package is organized as follow:
 
- - tools: [Alignment Tools Base](#alignment-tools-base) --- root directory for alignment tools - each tool has a sub-directory
+ - tools: [Indexers Base](#indexers-base) --- root directory for alignment tools - each tool has a sub-directory
  - data_sources: [Data Sources Base](#data-sources-base) --- root directory for data sources - each data source has a config file
- * Configuration.cfg.           --- The global config file for this package
- * newDatasetVersionTrigger.sh  --- a trigger to run when a new release of a given dataset is detected
- * newToolVersionTrigger.sh     --- a trigger to run when a new version of a given tool is detected
+ * Configuration.cfg: [Package Main Config File](#package-main-config-file) --- The global config file for this package
+ * newDatasetVersionTrigger.sh: [New Data Release Index Trigger](#new-data-release-index-trigger)  
+ * newToolVersionTrigger.sh :  [New Tool Version Index Trigger](#new-tool-version-index-trigger)  
 
 
   See:
      [<img src="workflow.pdf">](workflow.pdf)
+
+## Package Main Config File
+## New Data Release Index Trigger
 
 ## Data Sources Base
 
@@ -43,7 +46,7 @@ global environment variables:
   1) Ensembl
   2) Wormbase
   
-## Alignment Tools Base
+## Indexers Base
 
 Each tool is a directory under tools  and each directory contains the following files:
 
