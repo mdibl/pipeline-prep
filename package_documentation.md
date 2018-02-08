@@ -1,4 +1,4 @@
-# About This Project
+# About This Package
 
 Pipeline-prep project's goal is in two folds - first create a set reusable modules used to pre-index the reference 
 before running a given data pipeline - second create an automation that triggers pre-indexing of the reference each time 
