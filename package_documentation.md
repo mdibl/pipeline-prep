@@ -1,7 +1,7 @@
 # About This Project
 
-Pipeline-prep project's goal is in two folds - first creates a set reusable modules needed to pre-index the reference 
-used in a given data pipeline - second create an automation to run the pre-indexing step. 
+Pipeline-prep project's goal is in two folds - first creates a set reusable modules used to pre-index the reference 
+before running a given data pipeline - second create an automation to run the pre-indexing step. 
 
 The goals :
   1) Pre-Indexing reference genome/transcripome
