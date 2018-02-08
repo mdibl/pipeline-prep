@@ -19,6 +19,14 @@ The information under the root directory of the module is organized as follow:
 ## The Indexer
 ## Data Source Config Files
 
+Each data source is a commas-separated file with the following six fields:
+  1) Tool      -- the alignment tool name
+  2) Src       -- Data source name
+  3) organism  -- the reference organism name as specified by this data source
+  4) Ref target -- the dataset name
+  5) Ref target tpe -- [genome, transcriptome,proteome,...]
+  6) Alias -- index prefix (format: tool-data_source-dataset)
+ 
 ## About Hisat2 Index Program
 ```
   Usage: $path2/hisat2-build [options]* <reference_in> <ht2_base>
