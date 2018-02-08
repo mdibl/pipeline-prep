@@ -19,6 +19,12 @@ data format for a given dataset and each tool has its own sets of command to ind
 
 The information under the root directory of the package is organized as follow:
 
+ - [Alignment Tools Base](#alignment-tools-base)   --- (tools): root directory for alignment tools - each tool has a sub-directory
+ - [ data_sources]  --- root directory for data sources - each data source has a config file
+ * Configuration.cfg.           --- The global config file for this package
+ * newDatasetVersionTrigger.sh  --- a trigger to run when a new release of a given dataset is detected
+ * newToolVersionTrigger.sh     --- a trigger to run when a new version of a given tool is detected
+
  * tools         --- root directory for alignment tools - each tool has a sub-directory
  * data_sources  --- root directory for data sources - each data source has a config file
  * Configuration.cfg.           --- The global config file for this package
@@ -28,7 +34,7 @@ The information under the root directory of the package is organized as follow:
   See:
      [<img src="workflow.pdf">](workflow.pdf)
 
-### The Data Sources Directory
+## The Data Sources Directory
 
 Each data source is config file (tool.cfg) under data_sources/  - Each config file contains the following 
 global environment variables:
@@ -38,11 +44,11 @@ global environment variables:
   4) ORGANISMS - list of organism as provived (datasets are stored by organisms)
   5) and more
   
-#### Data Sources Used To Test
+### Data Sources Used To Test
   1) Ensembl
   2) Wormbase
   
-### The Tools Directory
+## Alignment Tools Base
 
 Each tool is a directory under tools  and each directory contains the following files:
 
