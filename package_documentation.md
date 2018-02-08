@@ -31,13 +31,29 @@ The information under the root directory of the package is organized as follow:
  - [Data Sources Base](#data-sources-base)(data_sources) 
  - [Indexers Base](#indexers-base)(tools)  
 
- 
-
-
-  See:
-     [<img src="workflow.pdf">](workflow.pdf)
 
 ## Package Main Config File
+
+Sets global environment variables to be used across triggers and indexers - this include:
+  * EXTERNAL_DATA_BASE 
+   ``` Where we store downloaded datasets from remote source - used by the new tool version index trigger
+      to get the current version of a given data source.
+      The current version info is stored in a file in the root directory of each data source
+   ```
+  * FASTA_FILES_BASE 
+   ```
+     Location of un-compressed datasets fasta files - stored by data source version
+   ```
+  * INDEX_BASE
+   ```
+     Base directory of alignment tools pre-generated indexes - Stored by tool version/datasource_version
+   ```
+  * EXTERNAL_TOOLS_BASE
+   ```
+   Path where external software packages are installed
+   locally - the current version info is stored in a file
+    in the root directory of each tool
+   ```
 ## New Data Release Index Trigger
 ## New Tool Version Index Trigger
 ## Data Sources Base
