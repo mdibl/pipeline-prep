@@ -100,7 +100,7 @@ then
    exit 1
 fi
 
-log=$LOGS_BASE/$SCRIPT_NAME.$source_version.$organism-$dataset.$tool_version.log
+log=$LOGS_BASE/$SCRIPT_NAME.$source_version.$organism.$dataset.$tool_version.log
 
 rm -rf $log
 touch $log
