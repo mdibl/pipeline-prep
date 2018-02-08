@@ -19,8 +19,9 @@ The information under the root directory of the module is organized as follow:
 ## The Indexer
 ## Data Source Config Files
 Name format : data_source-reference.cfg
+```
 Example : ensembl-reference.cfg
-
+```
 Each data source is a commas-separated file with the following six fields:
   1) Tool      -- the alignment tool name
   2) Src       -- Data source name
