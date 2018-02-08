@@ -1,8 +1,28 @@
-A set of scripts and config files to create indexes in Bowtie2
-To prepare the reference for mapping you must first index it by typing the following command
+# Bowtie2 Indexer
+
+A reusable module that uses bowtie2 index program to pre-index the reference before running a given data pipeline.
+Each run generates a unique log file that contains useful information about the dataset and the version of the tool
+used to generate the indexes.
+
+The module was created to run either as a standalone application or as a downstream process of index trigger applications. 
+
+## The Module Organization
+
+The information under the root directory of the module is organized as follow:
+
+- [Module Main Config File](#module-main-config-file)(bwa.cfg)
+- [The Indexer](#the-indexer)(Index)
+- [Data Source Config Files](#data-source-config-files)(data_source_name-reference.cfg)
+
+
+## Module Main Config File
+## The Indexer
+## Data Source Config Files
+
+## About Bowtie2 Index Program
 ```
-  $path2/bowtie2-build [options]* <reference_in> <bt2_base>
-```
+  Usage: $path2/bowtie2-build [options]* <reference_in> <bt2_base>
+
 Where <reference_in> is the absolute path to your reference file.
 
 <reference_in>
@@ -15,7 +35,7 @@ The basename of the index files to write. By default, bowtie2-build writes files
 NAME.2.bt2, NAME.3.bt2, NAME.4.bt2, NAME.rev.1.bt2, and NAME.rev.2.bt2, where NAME is <bt2_base>.
 
 Options:
-```
+
   Options
 
 -f
