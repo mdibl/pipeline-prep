@@ -1,9 +1,27 @@
-A set of scripts and config files to create indexes in Hisat2
+# Hisat2 Indexer
 
-To prepare the reference for mapping you must first index it by typing the following command
+A reusable module that uses Hisat2 index program to pre-index the reference before running a given data pipeline.
+Each run generates a unique log file that contains useful information about the dataset and the version of the tool
+used to generate the indexes.
+
+The module was created to run either as a standalone application or as a downstream process of index trigger applications. 
+
+## The Module Organization
+
+The information under the root directory of the module is organized as follow:
+
+- [Module Main Config File](#module-main-config-file)(bwa.cfg)
+- [The Indexer](#the-indexer)(Index)
+- [Data Source Config Files](#data-source-config-files)(data_source_name-reference.cfg)
+
+
+## Module Main Config File
+## The Indexer
+## Data Source Config Files
+
+## About Hisat2 Index Program
 ```
-  $path2/hisat2-build [options]* <reference_in> <ht2_base>
-```
+  Usage: $path2/hisat2-build [options]* <reference_in> <ht2_base>
 
 Where <reference_in> is the absolute path to your reference file.
 
@@ -21,16 +39,13 @@ See: http://ccb.jhu.edu/software/hisat2/manual.shtml#the-hisat2-build-indexer
 
 Notes:
 
-```
 If you use --snp, --ss, and/or --exon, hisat2-build will need about 200GB RAM for the human genome size 
 as index building involves a graph construction.  Otherwise, you will be able to build an index 
 on your desktop with 8GB RAM.
 
-```
 
 Main Options:
 
-```
 -f
 The reference input files (specified as <reference_in>) are FASTA files (usually having extension .fa, .mfa, .fna or similar).
 
