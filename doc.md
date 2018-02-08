@@ -19,22 +19,17 @@ data format for a given dataset and each tool has its own sets of command to ind
 
 The information under the root directory of the package is organized as follow:
 
- - [Alignment Tools Base](#alignment-tools-base)   --- (tools): root directory for alignment tools - each tool has a sub-directory
- - [ data_sources]  --- root directory for data sources - each data source has a config file
+ - tools: [Alignment Tools Base](#alignment-tools-base) --- root directory for alignment tools - each tool has a sub-directory
+ - data_sources: [Data Sources Base](#data-sources-base) --- root directory for data sources - each data source has a config file
  * Configuration.cfg.           --- The global config file for this package
  * newDatasetVersionTrigger.sh  --- a trigger to run when a new release of a given dataset is detected
  * newToolVersionTrigger.sh     --- a trigger to run when a new version of a given tool is detected
 
- * tools         --- root directory for alignment tools - each tool has a sub-directory
- * data_sources  --- root directory for data sources - each data source has a config file
- * Configuration.cfg.           --- The global config file for this package
- * newDatasetVersionTrigger.sh  --- a trigger to run when a new release of a given dataset is detected
- * newToolVersionTrigger.sh     --- a trigger to run when a new version of a given tool is detected
- 
+
   See:
      [<img src="workflow.pdf">](workflow.pdf)
 
-## The Data Sources Directory
+## Data Sources Base
 
 Each data source is config file (tool.cfg) under data_sources/  - Each config file contains the following 
 global environment variables:
