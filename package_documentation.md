@@ -1,6 +1,6 @@
 # About This Project
 
-Pipeline-prep project's goal is in two folds - first creates a set reusable modules used to pre-index the reference 
+Pipeline-prep project's goal is in two folds - first create a set reusable modules used to pre-index the reference 
 before running a given data pipeline - second create an automation to run the pre-indexing step. 
 
 The goals :
