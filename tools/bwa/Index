@@ -131,8 +131,6 @@ do
 done
 
 FASTA_FILES=`ls $datasets_fasta_dir | grep $file_pattern`
-
-echo "Dataset File pattern: $file_pattern" | tee -a $log
 # run index command
 cd $index_dir
 echo "Running indexes from `pwd`" | tee -a $log
@@ -142,7 +140,9 @@ do
     index_cmd="$tool_exec index $file_prefix $bwa_algorithm $datasets_fasta_dir/$target_file"
     echo "Dataset file: $datasets_fasta_dir/$target_file" | tee -a $log
     echo "Cmd: $index_cmd" | tee -a $log
+    echo "=== $tool_exec's Logs start Here ===" | tee -a $log
     $index_cmd 2>&1 | tee -a $log
+    echo "=== $tool_exec's Logs end Here ===" | tee -a $log
 done
 echo "Program Complete" | tee -a $log
 exit 0
