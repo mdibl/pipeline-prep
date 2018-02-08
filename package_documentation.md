@@ -36,7 +36,8 @@ The information under the root directory of the package is organized as follow:
 
 Sets global environment variables to be used across triggers and indexers - this include:
   * EXTERNAL_DATA_BASE 
-   ``` Where we store downloaded datasets from remote source - used by the new tool version index trigger
+   ``` 
+      Where we store downloaded datasets from remote source - used by the new tool version index trigger
       to get the current version of a given data source.
       The current version info is stored in a file in the root directory of each data source
    ```
