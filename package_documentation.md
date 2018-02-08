@@ -17,7 +17,11 @@ The goals :
 Indexes are created by tool version -> data source version > organism-dataset. Each data source specifies
 the format of each of its datasets and each tool has its own sets of command to index the reference data.
 
-# Package Organization
+This documentation covers:
+  1) [The Package Organization](#the-package-organization)
+  2) [The Package Integration](#the-package-integration)
+
+# The Package Organization
 
 The information under the root directory of the package is organized as follow:
 
