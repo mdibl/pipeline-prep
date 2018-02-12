@@ -18,8 +18,11 @@ Indexes are created by tool version -> data source version > organism-dataset. E
 the format of each of its datasets and each tool has its own sets of command to index the reference data.
 
 This documentation covers:
-  1) [The Package Organization](#the-package-organization)
-  2) [The Package Integration](#the-package-integration)
+  1) [The Usage](#the-usage)
+  2) [The Package Organization](#the-package-organization)
+  3) [The Package Integration](#the-package-integration)
+
+# The Usage
 
 # The Package Organization
 
