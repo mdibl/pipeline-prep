@@ -89,7 +89,7 @@ cd $indexers_base
 WORKING_DIR=`pwd`
 for tool in ${ALIGN_TOOLS_LIST}
 do
-    TOOL_BASE=${WORKING_DIR}/$tool
+    TOOL_BASE=${WORKING_DIR}/${tool}
     TOOL_CONFIG=${tool}.cfg
     [ ! -d ${TOOL_BASE} ] && continue
     cd ${TOOL_BASE}
@@ -110,8 +110,8 @@ do
        echo "Generating ${tool} Indexes for ${DATA_DIR} ${organism}.${dataset} dataset" | tee -a ${LOG_FILE}
        echo "Running ${tool_name} indexer from `pwd`" | tee -a ${LOG_FILE}
        indexer_cmd="Index ${data_source_name} ${DATA_DIR} ${organism} ${dataset} ${tool_name} ${TOOL_VERSION} ${index_prefix}"
-       echo "Command: ${indexer_cmd}" | tee -a $LOG_FILE 
-       ./${indexer_cmd} 2>&1 | tee -a $log
+       echo "Command: ${indexer_cmd}" | tee -a ${LOG_FILE} 
+       ./${indexer_cmd} 2>&1 | tee -a ${LOG_FILE} 
 
        date | tee -a ${LOG_FILE}
      done
