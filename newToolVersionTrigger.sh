@@ -83,16 +83,18 @@ do
        organism=${fields[2]}
        dataset=${fields[3]}
        index_prefix=${fields[5]}
-       #
-       ## Next if indexes for this dataset version have alrready created for this tool verion
-       if [ -d ${INDEX_BASE}/${TOOL_VERSION}/${ DATA_VERSION}/${organism}-${dataset} ]
-       then
-           echo "SKIPPING:  ${INDEX_BASE}/${TOOL_VERSION}/${ DATA_VERSION}/${organism}-${dataset} already exists"
-           continue
-       fi
+       
        echo "##" | tee -a $LOG_FILE
        date | tee -a $LOG_FILE
        echo "Generating $tool_name Indexes for $DATA_VERSION $organism.$dataset dataset" | tee -a $LOG_FILE
+       #
+       ## Next if indexes for this dataset version have alrready created for this tool verion
+       if [ -d ${INDEX_BASE}/${TOOL_VERSION}/${DATA_VERSION}/${organism}-${dataset} ]
+       then
+           echo "SKIPPING:  ${INDEX_BASE}/${TOOL_VERSION}/${DATA_VERSION}/${organism}-${dataset} already exists"
+           continue
+       fi
+       
        echo "Running $tool_name indexer from `pwd`" | tee -a $LOG_FILE
        indexer_cmd="Index $data_source $DATA_VERSION $organism $dataset $tool_name $TOOL_VERSION $index_prefix"
        echo "Command: ./$indexer_cmd"| tee -a $LOG_FILE 
