@@ -56,7 +56,7 @@ date | tee -a $LOG_FILE
 echo "**********              *******************" | tee -a $LOG_FILE
 echo "Creating indexes for $TOOL_VERSION"| tee -a $LOG_FILE
 echo "**********  *******************************"| tee -a $LOG_FILE
-echo date | tee -a $LOG_FILE
+echo `date` | tee -a $LOG_FILE
 echo "Tool Version: $TOOL_VERSION"
 ## I need to store 
 for data_source in "${!REFERENCE_FILE[@]}"
@@ -73,6 +73,7 @@ do
        continue
     fi
     data_release_number=`cat $data_release_file`
+    echo ""
     echo "**********************************************"
     echo "Indexing datasets in  : $reference_config"
     echo "**********************************************"
