@@ -64,15 +64,17 @@ do
     reference_config=$REFERENCE_FILE[$data_source]
     [ ! -f $reference_config ] && continue
     ##get the current release for this data source 
-    data_release_file=$EXTERNAL_DATA_BASE/$data_source/current_release_NUMBER
+    data_release_file=RELEASE_FILE[$data_source]
+    
     if [ ! -f $data_release_file ]
     then
-       echo "ERROR: Cna't detect current release for $data_source" | tee -a $LOG_FILE
+       echo "ERROR: Can't detect current release file for $data_source" | tee -a $LOG_FILE
        echo "File missing: $data_release_file" | tee -a $LOG_FILE
        continue
     fi
     data_release_number=`cat $data_release_file`
     echo "Indexing datasets in  : $reference_config"
+    ##How we store unzipped data : source_name-version 
     DATA_VERSION=$data_source-$data_release_number
     for line in  `cat $reference_config`
     do
@@ -81,6 +83,13 @@ do
        organism=${fields[2]}
        dataset=${fields[3]}
        index_prefix=${fields[5]}
+       #
+       ## Next if indexes for this dataset version have alrready created for this tool verion
+       if [ -d ${INDEX_BASE}/${TOOL_VERSION}/${ DATA_VERSION}/${organism}-${dataset} ]
+       then
+           echo "SKIPPING:  ${INDEX_BASE}/${TOOL_VERSION}/${ DATA_VERSION}/${organism}-${dataset} already exists"
+           continue
+       fi
        echo "##" | tee -a $LOG_FILE
        date | tee -a $LOG_FILE
        echo "Generating $tool_name Indexes for $DATA_VERSION $organism.$dataset dataset" | tee -a $LOG_FILE
