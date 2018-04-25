@@ -79,11 +79,11 @@ do
     for line in  `cat $reference_config`
     do
        IFS=', ' read -r -a fields <<< "$line"
-       tool_name=${fields[0]}
+       target_name=${fields[0]}
        organism=${fields[2]}
        dataset=${fields[3]}
        index_prefix=${fields[5]}
-       
+       [ "$target_name" != $tool_name ] && continue
        echo "##" | tee -a $LOG_FILE
        date | tee -a $LOG_FILE
        echo "Generating $tool_name Indexes for $DATA_VERSION $organism.$dataset dataset" | tee -a $LOG_FILE
