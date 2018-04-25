@@ -73,7 +73,9 @@ do
        continue
     fi
     data_release_number=`cat $data_release_file`
+    echo "**********************************************"
     echo "Indexing datasets in  : $reference_config"
+    echo "**********************************************"
     ##How we store unzipped data : source_name-version 
     DATA_VERSION=$data_source-$data_release_number
     for line in  `cat $reference_config`
