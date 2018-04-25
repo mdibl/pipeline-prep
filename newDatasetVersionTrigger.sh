@@ -106,9 +106,13 @@ do
        dataset=${fields[3]}
        index_prefix=${fields[5]}
        #
+       #
        ## Next if indexes for this dataset version have alrready created for this tool verion
-       [ -d ${TOOL_VERSION}/${DATA_DIR}/${organism}-${dataset} ] && continue
-       
+       if [ -d ${INDEX_BASE}/${TOOL_VERSION}/${ DATA_DIR}/${organism}-${dataset} ]
+       then
+           echo "SKIPPING:  ${INDEX_BASE}/${TOOL_VERSION}/${ DATA_DIR}/${organism}-${dataset} already exists"
+           continue
+       fi
        echo "##" | tee -a ${LOG_FILE}
        date | tee -a ${LOG_FILE}
        echo "Generating ${tool} Indexes for ${DATA_DIR} ${organism}.${dataset} dataset" | tee -a ${LOG_FILE}
