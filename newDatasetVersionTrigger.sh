@@ -108,9 +108,9 @@ do
        #
        #
        ## Next if indexes for this dataset version have alrready created for this tool verion
-       if [ -d ${INDEX_BASE}/${TOOL_VERSION}/${ DATA_DIR}/${organism}-${dataset} ]
+       if [ -d ${INDEX_BASE}/${TOOL_VERSION}/${DATA_DIR}/${organism}-${dataset} ]
        then
-           echo "SKIPPING:  ${INDEX_BASE}/${TOOL_VERSION}/${ DATA_DIR}/${organism}-${dataset} already exists"
+           echo "SKIPPING:  ${INDEX_BASE}/${TOOL_VERSION}/${DATA_DIR}/${organism}-${dataset} already exists"
            continue
        fi
        echo "##" | tee -a ${LOG_FILE}
