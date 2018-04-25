@@ -59,12 +59,12 @@ echo "**********  *******************************"| tee -a $LOG_FILE
 echo date | tee -a $LOG_FILE
 echo "Tool Version: $TOOL_VERSION"
 ## I need to store 
-for data_source in REFERENCE_FILE
+for data_source in "${!REFERENCE_FILE[@]}"
 do
-    reference_config=$REFERENCE_FILE[$data_source]
+    reference_config=${REFERENCE_FILE[$data_source]}
     [ ! -f $reference_config ] && continue
     ##get the current release for this data source 
-    data_release_file=RELEASE_FILE[$data_source]
+    data_release_file=${RELEASE_FILE[$data_source]}
     
     if [ ! -f $data_release_file ]
     then
