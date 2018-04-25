@@ -47,7 +47,7 @@ then
   echo "ERROR $tool_config config file missing on `uname -n` under: `pwd`"
   exit 1
 fi
-source ./$tool_config.cfg
+source ./$tool_config
 
 LOG_FILE="${LOGS_BASE}/$SCRIPT_NAME.$TOOL_VERSION.log"
 rm -rf $LOG_FILE
