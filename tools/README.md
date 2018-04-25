@@ -100,7 +100,7 @@ OPTIONS:
 
      bwtsw      Algorithm implemented in BWT-SW. This method works with the whole human genome.
 
-Notes:
+Notes:   
 This gives .pac, .bwt, .ann, .amb and .sa index files that all have the same reference_fasta basename. 
 Tools recognize index files within the same directory by their identical basename.
 
