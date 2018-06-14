@@ -42,6 +42,7 @@ fi
 source ./${main_config}
 source ./${data_source_config}
 
+[ ! -d ${INDEX_BASE} ] && mkdir -p ${INDEX_BASE}
 [ ! -d ${LOGS_BASE} ] && mkdir -p ${LOGS_BASE}
 #
 
