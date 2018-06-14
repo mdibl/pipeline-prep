@@ -49,6 +49,9 @@ then
 fi
 source ./$tool_config
 
+[ ! -d ${INDEX_BASE} ] && mkdir -p ${INDEX_BASE}
+[ ! -d ${LOGS_BASE} ] && mkdir -p ${LOGS_BASE}
+
 LOG_FILE="${LOGS_BASE}/$SCRIPT_NAME.$TOOL_VERSION.log"
 rm -rf $LOG_FILE
 touch $LOG_FILE
