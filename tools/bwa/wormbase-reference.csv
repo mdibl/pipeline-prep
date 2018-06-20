@@ -6,13 +6,13 @@ bwa,wormbase,c_elegans,pseudogenic_transcripts,transcriptome,bwa-wormbase-pseudo
 bwa,wormbase,c_elegans,transcriptome_joined,transcriptome,bwa-wormbase-transcriptome_joined
 bwa,wormbase,b_malayi,genomic,genome,bwa-wormbase-genomic
 bwa,wormbase,b_malayi,mRNA_transcripts,transcriptome,bwa-wormbase-mRNA_transcripts
-bwa,wormbase,b_malayi,ncRNA_transcripts,transcriptome,bowtie2-wormbase-ncRNA_transcripts
+bwa,wormbase,b_malayi,ncRNA_transcripts,transcriptome,bwa-wormbase-ncRNA_transcripts
 bwa,wormbase,b_malayi,pseudogenic_transcripts,transcriptome,bwa-wormbase-pseudogenic_transcripts
 bwa,wormbase,b_malayi,transcriptome_joined,transcriptome,bwa-wormbase-transcriptome_joined
 bwa,wormbase,c_brenneri,genomic,genome,bwa-wormbase-genomic
 bwa,wormbase,c_brenneri,mRNA_transcripts,transcriptome,bwa-wormbase-mRNA_transcripts
 bwa,wormbase,c_brenneri,ncRNA_transcripts,transcriptome,bwa-wormbase-ncRNA_transcripts
-bwa,wormbase,c_brenneri,pseudogenic_transcripts,transcriptome,bowtie2-wormbase-pseudogenic_transcripts
+bwa,wormbase,c_brenneri,pseudogenic_transcripts,transcriptome,bwa-wormbase-pseudogenic_transcripts
 bwa,wormbase,c_brenneri,transcriptome_joined,transcriptome,bwa-wormbase-transcriptome_joined
 bwa,wormbase,c_briggsae,genomic,genome,bwa-wormbase-genomic
 bwa,wormbase,c_briggsae,mRNA_transcripts,transcriptome,bwa-wormbase-mRNA_transcripts
