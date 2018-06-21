@@ -36,6 +36,7 @@ tool_name=$2
 main_config=Configuration.cfg
 data_source_config=data_sources/${data_source_name}.cfg
 TOOL_BASE=tools/$tool_name
+TOOL_CONFIG=${tool_name}.cfg
 #
 ## indexers_base is relative to this script
 # or under the root directory of this repos
@@ -55,6 +56,11 @@ if [ ! -f ${data_source_config} ]
 then
   echo "ERROR: ${data_source_config} file missing from `pwd`"
   exit 1
+fi
+if [ ! -f ${TOOL_BASE}/${TOOL_CONFIG} ] 
+then
+   echo "ERROR: ${TOOL_CONFIG} file missing from ${TOOL_BASE}"
+   exit 1
 fi
 ##Set global variables
 source ./${main_config}
@@ -84,7 +90,6 @@ then
 fi
 ##set reference file name from data source config 
 reference_file_name=${REFERENCE_FILE}
-
 cd ${TOOL_BASE}
 # get this tool version
 source ./${TOOL_CONFIG}
@@ -94,15 +99,13 @@ LOG_FILE=${LOGS_BASE}/${SCRIPT_NAME}.${DATA_DIR}.${TOOL_VERSION}.log
 rm -rf ${LOG_FILE}
 touch ${LOG_FILE}
 date | tee -a ${LOG_FILE}
-
 echo "**********              *******************" | tee -a ${LOG_FILE}
 echo "Indexing  ${DATA_DIR} datasets using ${TOOL_VERSION}" | tee -a ${LOG_FILE}
 echo "**********  *******************************" | tee -a ${LOG_FILE}
 echo "Datasets Reference config file: `pwd`/${reference_file_name} "| tee -a ${LOG_FILE}
 
-TOOL_CONFIG=${tool_name}.cfg
+
 [ ! -f ${reference_file_name} ] && exit 1
-[ ! -f ${TOOL_CONFIG} ] && exit 1
 for line in  `cat ${reference_file_name}`
 do
     IFS=', ' read -r -a fields <<< "$line"
