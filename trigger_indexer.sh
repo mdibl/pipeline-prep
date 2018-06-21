@@ -96,7 +96,7 @@ touch ${LOG_FILE}
 date | tee -a ${LOG_FILE}
 
 echo "**********              *******************" | tee -a ${LOG_FILE}
-echo "Running indexes for ${DATA_DIR}" | tee -a ${LOG_FILE}
+echo "Indexing  ${DATA_DIR} datasets using ${TOOL_VERSION}" | tee -a ${LOG_FILE}
 echo "**********  *******************************" | tee -a ${LOG_FILE}
 echo "Alignment Tool: ${TOOL_VERSION}" | tee -a ${LOG_FILE}
 echo "Reference config file: ${reference_file_name} "| tee -a ${LOG_FILE}
