@@ -1,0 +1,7 @@
+tool,source,organism,reference_target,reference_target_type,index_prefix
+star,ensembl,caenorhabditis_elegans,genome,genome,star-ensembl-genome
+star,ensembl,danio_rerio,genome,genome,star-ensembl-genome
+star,ensembl,drosophila_melanogaster,genome,genome,star-ensembl-genome
+star,ensembl,homo_sapiens,genome,genome,star-ensembl-genome
+star,ensembl,mus_musculus,genome,genome,star-ensembl-genome
+star,ensembl,saccharomyces_cerevisiae,genome,genome,star-ensembl-genome
