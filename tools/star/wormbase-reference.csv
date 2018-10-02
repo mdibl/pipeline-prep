@@ -1,0 +1,10 @@
+tool,source,organism,reference_target,reference_target_type,index_prefix
+star,wormbase,c_elegans,genomic,genome,star-wormbase-genomic
+star,wormbase,b_malayi,genomic,genome,star-wormbase-genomic
+star,wormbase,c_brenneri,genomic,genome,star-wormbase-genomic
+star,wormbase,c_briggsae,genomic,genome,star-wormbase-genomic
+star,wormbase,c_japonica,genomic,genome,star-wormbase-genomic
+star,wormbase,c_remanei,genomic,genome,star-wormbase-genomic
+star,wormbase,o_volvulus,genomic,genome,star-wormbase-genomic
+star,wormbase,p_pacificus,genomic,genome,star-wormbase-genomic
+star,wormbase,s_ratti,genomic,genome,star-wormbase-genomic
