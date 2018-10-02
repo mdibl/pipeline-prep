@@ -1,0 +1,4 @@
+tool,source,organism,reference_target,reference_target_type,index_prefix
+rsem,ensembl,danio_rerio,transcriptome,cdna,rsem-ensembl-cdna
+rsem,ensembl,danio_rerio,genome,dna,rsem-ensembl-genome
+rsem,ensembl,danio_rerio,genome,genome,rsem-ensembl-genome
