@@ -76,7 +76,7 @@ date | tee -a ${LOG_FILE}
 echo "**********              *******************" | tee -a ${LOG_FILE}
 echo "Running indexes for ${DATA_DIR}" | tee -a ${LOG_FILE}
 echo "**********  *******************************" | tee -a ${LOG_FILE}
-echo "Alignment Tools: ${ALIGN_INDEX_TOOLS}" | tee -a ${LOG_FILE}
+echo "Alignment Tools: ${ALIGN_TOOLS_LIST}" | tee -a ${LOG_FILE}
 echo "Reference config file: ${REFERENCE_FILE} "| tee -a ${LOG_FILE}
 #
 ## indexers_base is relative to this script
@@ -88,6 +88,8 @@ then
 fi
 cd $indexers_base
 WORKING_DIR=`pwd`
+echo "Indexer Base: ${WORKING_DIR} "| tee -a ${LOG_FILE}
+#
 for tool in ${ALIGN_TOOLS_LIST}
 do
     TOOL_BASE=${WORKING_DIR}/${tool}
