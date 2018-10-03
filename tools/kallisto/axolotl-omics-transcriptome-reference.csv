@@ -1,3 +1,4 @@
 tool,source,organism,reference_target,reference_target_type,index_prefix
-kallisto,axolotl-omic-transcriptomes,axolotl,transcriptome,transcriptome,kallisto-axolotl-omics-transcriptome-transcriptome
+kallisto,axolotl-omic-transcriptome,axolotl,transcriptome,transcriptome,kallisto-axolotl-omics-transcriptome-transcriptome
+kallisto,axolotl-omic-transcriptome,axolotl,transcriptome_longer300bp,transcriptome,kallisto-axolotl-omics-transcriptome-transcriptome
 

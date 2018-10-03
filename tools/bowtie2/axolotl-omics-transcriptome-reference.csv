@@ -1,3 +1,4 @@
 tool,source,organism,reference_target,reference_target_type,index_prefix
 bowtie2,axolotl-omics-transcriptome,axolotl,transcriptome,transcriptome,bowtie2-axolotl-omics-transcriptome-transcriptome
+bowtie2,axolotl-omics-transcriptome,axolotl,transcriptome_longer300bp,transcriptome,bowtie2-axolotl-omics-transcriptome-transcriptome
 

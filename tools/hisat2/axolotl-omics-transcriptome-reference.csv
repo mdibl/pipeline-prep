@@ -1,3 +1,4 @@
 tool,source,organism,reference_target,reference_target_type,index_prefix
 hisat2,axolotl-omics-transcriptome,axolotl,transcriptome,transcriptome,hisat2-axolotl-omics-transcriptome-transcriptome
+hisat2,axolotl-omics-transcriptome,axolotl,transcriptome_longer300bp,transcriptome,hisat2-axolotl-omics-transcriptome-transcriptome
 
