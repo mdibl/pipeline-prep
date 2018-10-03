@@ -93,6 +93,9 @@ fi
 #
 # Create index directory if not exists
 #
+#If this dataset has already been indexed clear old indexes
+[ "$(ls -A $index_dir)" ] && mv $index_dir $index_dir.archive 
+#
 [ ! -d $index_dir ] && mkdir -p $index_dir
 if [ ! -d $index_dir ]
 then
@@ -122,7 +125,8 @@ source ./$source_config
 file_pattern=""
 genome_file=""
 
-file_pattern=$DATASETS[$dataset]
+file_pattern=${DATASETS[$dataset]}
+files_count=`ls $datasets_fasta_dir | grep $file_pattern | wc -l`
 FASTA_FILES=`ls $datasets_fasta_dir | grep $file_pattern`
 # run index command
 reference_in=""
