@@ -79,6 +79,12 @@ gtf_dir=$FASTA_FILES_BASE/$source_version/$organism-gtf
 
 if [ ! -f $gtf_file ]
 then
+    gtf_files=`ls $gtf_dir/ | grep ".gtf"`
+    for target_file in $gtf_files
+    do
+         IFS='.' read -r -a fields <<< "$target_file"
+         [ "${fields[3]}" = $dataset ] && index_file_prefix=${fields[5]}
+    done 
 fi
 
 index_options="$tool_exec $THREADS $MODE $sjdbGTFfile $gtf_file $sjdbOverhang $STAR_GENOME_DIR $index_dir"
