@@ -94,6 +94,9 @@ fi
 #
 # Create index directory if not exists
 #
+#If this dataset has already been indexed clear old indexes
+[ "$(ls -A $index_dir)" ] && mv $index_dir $index_dir.archive 
+#
 [ ! -d $index_dir ] && mkdir -p $index_dir
 if [ ! -d $index_dir ]
 then
@@ -123,7 +126,7 @@ source ./$source_config
 file_pattern=""
 genome_file=""
 bwa_algorithm=""
-file_pattern=$DATASETS[$dataset]
+file_pattern=${DATASETS[$dataset]}
 
 for genome in ${GENOME}
 do
