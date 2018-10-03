@@ -51,9 +51,7 @@ data_source=$1
 source_version=$2
 organism=$3
 dataset=$4
-##get gtf file 
-gtf_file=$5
-
+gtf_file=""
 tool_version=$TOOL_VERSION
 index_file_prefix=""
 this_reference_file="$data_source-reference.csv"
@@ -71,11 +69,18 @@ done
 
 [ $# -gt 5 ] && tool_version=$6
 [ $# -gt 6 ] && index_file_prefix=$7
+[ $# -gt 7 ] && gtf_file=$8
 
 tool_index_base=$INDEX_BASE/$tool_version
 tool_exec=$PACKAGE_INSTALL_BASE/$tool_version/bin/Linux_x86_64/$TOOL_INDEX_EXEC
 index_dir=$tool_index_base/$source_version/$organism-$dataset
 datasets_fasta_dir=$FASTA_FILES_BASE/$source_version/$organism-$dataset
+gtf_dir=$FASTA_FILES_BASE/$source_version/$organism-gtf
+
+if [ ! -f $gtf_file ]
+then
+fi
+
 index_options="$tool_exec $THREADS $MODE $sjdbGTFfile $gtf_file $sjdbOverhang $STAR_GENOME_DIR $index_dir"
 
 source_config=../../data_sources/$data_source.cfg
