@@ -88,15 +88,14 @@ fi
 #If this dataset has already been indexed continue
 if [ -d $index_dir ]
 then
-   echo "SKIPPING: $index_dir already exists" | tee -a $log
-   exit 0
+   #If this dataset has already been indexed clear old indexes
+   [ "$(ls -A $index_dir)" ] && mv $index_dir $index_dir.archive 
+#
 fi
 #
 # Create index directory if not exists
 #
-#If this dataset has already been indexed clear old indexes
-[ "$(ls -A $index_dir)" ] && mv $index_dir $index_dir.archive 
-#
+
 [ ! -d $index_dir ] && mkdir -p $index_dir
 if [ ! -d $index_dir ]
 then
