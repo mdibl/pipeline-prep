@@ -95,7 +95,6 @@ fi
 #
 # Create index directory if not exists
 #
-
 [ ! -d $index_dir ] && mkdir -p $index_dir
 if [ ! -d $index_dir ]
 then

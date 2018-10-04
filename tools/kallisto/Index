@@ -92,8 +92,6 @@ fi
 #
 # Create index directory if not exists
 #
-#If this dataset has already been indexed clear old indexes
-[ "$(ls -A $index_dir)" ] && mv $index_dir $index_dir.archive 
 #
 [ ! -d $index_dir ] && mkdir -p $index_dir
 if [ ! -d $index_dir ]
