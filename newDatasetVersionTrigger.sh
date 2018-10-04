@@ -115,10 +115,14 @@ do
        #
        #
        ## Next if indexes for this dataset version have alrready created for this tool verion
+       #If this dataset has already been indexed continue
        if [ -d ${INDEX_BASE}/${TOOL_VERSION}/${DATA_DIR}/${organism}-${dataset} ]
        then
-           echo "SKIPPING:  ${INDEX_BASE}/${TOOL_VERSION}/${DATA_DIR}/${organism}-${dataset} - Index already exists"
-           continue
+           if [ "$(ls -A ${INDEX_BASE}/${TOOL_VERSION}/${DATA_DIR}/${organism}-${dataset})" ]
+           then
+              echo "SKIPPING:  ${INDEX_BASE}/${TOOL_VERSION}/${DATA_DIR}/${organism}-${dataset} - Index already exists"
+              continue
+           fi
        fi
        echo "Running ${tool_name} indexer from `pwd`" | tee -a ${LOG_FILE}
        indexer_cmd="Index ${data_source_name} ${DATA_DIR} ${organism} ${dataset} ${tool_name} ${TOOL_VERSION} ${index_prefix}"
