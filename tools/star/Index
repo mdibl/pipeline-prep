@@ -22,7 +22,7 @@ WORKING_DIR=`pwd`
 if [ $# -lt 5 ]
 then 
   echo "Usage: ./$SCRIPT_NAME  source source-version organism dataset tool_name  [tool-version] [index_prefix] [path2/gtf_file]"
-  echo "Example: ./$SCRIPT_NAME ensembl ensembl-91 danio_rerio genome star STAR-2.6.1b start-ensembl-cdna /data/scratch/ensembl-91/danio_rerio-gtf/Danio_rerio.GRCz10.91.gtf [STAR-2.6.0c]"
+  echo "Example: ./$SCRIPT_NAME ensembl ensembl-91 danio_rerio genome star STAR-2.6.1b start-ensembl-genome /data/scratch/ensembl-91/danio_rerio-gtf/Danio_rerio.GRCz10.91.gtf"
   echo "The default tool-version is the current version of the tool"
   echo "The default index-prefix is tool_name-data_source_name-dataset"
   exit 1
@@ -77,17 +77,20 @@ index_dir=$tool_index_base/$source_version/$organism-$dataset
 datasets_fasta_dir=$FASTA_FILES_BASE/$source_version/$organism-$dataset
 gtf_dir=$FASTA_FILES_BASE/$source_version/$organism-gtf
 
-if [ ! -f $gtf_file ]
+if [ ! $gtf_file ]
 then
     gtf_files=`ls $gtf_dir/ | grep ".gtf"`
-    for target_file in $gtf_files
-    do
-         IFS='.' read -r -a fields <<< "$target_file"
-         [ "${fields[3]}" = $dataset ] && index_file_prefix=${fields[5]}
-    done 
+    gtf_files_count=`ls $gtf_dir/ | grep ".gtf" | wc -l`
+    if [ $gtf_files_count -eq 1 ]
+    then
+        gtf_file=$gtf_dir/$gtf_files
+    fi
 fi
-
-index_options="$tool_exec $THREADS $MODE $sjdbGTFfile $gtf_file $sjdbOverhang $STAR_GENOME_DIR $index_dir"
+if [ ! $gtf_file ]
+then
+   echo "ERROR: gtf file was not specified and could not be detected by default under $gtf_dir"
+   exit 1
+fi
 
 source_config=../../data_sources/$data_source.cfg
 
@@ -128,13 +131,14 @@ echo "" | tee -a $log
 echo "Date:`date`" | tee -a $log
 echo "Tool-version: $tool_version" | tee -a $log
 echo "Path to tool exec : $tool_exec" | tee -a $log
+echo "Running indexer from `pwd`" | tee -a $log
 echo "Organism: $organism" | tee -a $log
 echo "Dataset: $dataset" | tee -a $log
 echo "Indexes Directory: $index_dir" | tee -a $log
 echo "Indexes File Prefix: $index_file_prefix" | tee -a $log
 echo "Refence Data Source version: $source_version" | tee -a $log
+echo "GTF Input file: $gtf_file" | tee -a $log
 echo "Reference Input Dataset Directory: $datasets_fasta_dir" | tee -a $log
-echo "Reference Data source config: $source_config" | tee -a $log
 source ./$source_config
 file_pattern=""
 genome_file=""
@@ -143,12 +147,11 @@ genome_file=""
 # 
 file_pattern=${DATASETS[$dataset]}
 #file_pattern=$DATASETS[$dataset]
-echo "Reference File Pattern: $file_pattern" | tee -a $log
+echo "Reference Dataset File Pattern: $file_pattern" | tee -a $log
 files_count=`ls $datasets_fasta_dir | grep $file_pattern | wc -l`
 FASTA_FILES=`ls $datasets_fasta_dir | grep $file_pattern`
 # run index command
 echo "Reference Files Count: $files_count" | tee -a $log
-echo "Running indexer from `pwd`" | tee -a $log
 for target_file  in $FASTA_FILES
 do 
     ##If there is more then one, then create a sub directory for each reference
@@ -162,9 +165,9 @@ do
     index_cmd="$tool_exec $threadsOption $modeOption $sjdbGTFfileOption $gtf_file \
     $sjdbOverhangOption $starGenomeDirOption $target_index_dir \
     $genomeFastaFilesOption $reference_file"
+    echo "Reference Dataset file: $datasets_fasta_dir/$target_file" | tee -a $log
     echo " -------------------------- " | tee -a $log
     echo " " | tee -a $log
-    echo "Reference Dataset file: $datasets_fasta_dir/$target_file" | tee -a $log
     echo "Indexer Cmd: $index_cmd" | tee -a $log
     echo " " | tee -a $log
     echo "=== `basename $tool_exec`'s Logs start Here ===" | tee -a $log
