@@ -87,9 +87,7 @@ fi
 #If this dataset has already been indexed continue
 if [ -d $index_dir ]
 then
-   #If this dataset has already been indexed clear old indexes
    [ "$(ls -A $index_dir)" ] && mv $index_dir $index_dir.archive 
-#
 fi
 #
 [ ! -d $index_dir ] && mkdir -p $index_dir
@@ -144,8 +142,6 @@ for genome in ${GENOME}
 do
     [ "$genome" = $dataset ] && index_options=${ALGO_GENOME} 
 done
-
-
 index_cmd="$tool_exec $index_options -f $reference_in $index_file_prefix"
 echo "Dataset file: $reference_in" | tee -a $log
 echo "Cmd: $index_cmd" | tee -a $log
