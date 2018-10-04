@@ -1,6 +1,6 @@
 # STAR Indexer
 
-A reusable module that uses STAR program to pre-index the reference before running a given data pipeline.
+A reusable module that uses RSEM program to pre-index the reference before running a given data pipeline.
 Each run generates a unique log file that contains useful information about the dataset and the version of the tool
 used to generate the indexes.
 
@@ -19,23 +19,7 @@ The information under the root directory of the module is organized as follow:
 ## The Indexer
 ## Data Source Config Files
 
-## About STAR Program
+## About 'rsem-prepare-reference' Program
 ```
-  Usage: bwa index <ref.fa>
-
-Where <ref.fa> is the absolute path to your reference file.
-This gives .pac, .bwt, .ann, .amb and .sa index files that all have the same ref.fa basename. 
-
-Tools recognize index files within the same directory by their identical basename. In the case of BWA, 
-it uses the basename preceding the .
-fasta suffix and searches for the index file, e.g. with .bwt suffix or .64.bwt suffix. Depending on which of
-the two choices it finds, it looks for the same suffix for the other index files, e.g. .alt or .64.alt. 
-Lack of a matching .alt index file will cause BWA to map reads without alt-handling.
-
-Bwa maps the reads to the reference genome unsing one of the following three algorithms: 
-1) BWA-backtrack, 
-2) BWA-SW and 
-3) BWA-MEM. 
-
-For reads from 70bp up to a few megabases it is recommend using BWA MEM to map the data to a given reference genome
+  
 ```
