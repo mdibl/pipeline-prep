@@ -107,7 +107,6 @@ fi
 #If this dataset has already been indexed continue
 if [ -d $index_dir ]
 then
-   #If this dataset has already been indexed clear old indexes
    [ "$(ls -A $index_dir)" ] && mv $index_dir $index_dir.archive
 fi
 #
