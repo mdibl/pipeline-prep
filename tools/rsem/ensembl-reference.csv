@@ -1,7 +1,13 @@
 tool,source,organism,reference_target,reference_target_type,index_prefix
 rsem,ensembl,caenorhabditis_elegans,genome,genome,rsem-ensembl-genome
+rsem,ensembl,caenorhabditis_elegans,transcriptome_joined_filtered,transcriptome,rsem-ensembl-transcriptome_gtf_filtered
 rsem,ensembl,danio_rerio,genome,genome,rsem-ensembl-genome
+rsem,ensembl,danio_rerio,transcriptome_joined_filtered,transcriptome,rsem-ensembl-transcriptome_gtf_filtered
 rsem,ensembl,drosophila_melanogaster,genome,genome,rsem-ensembl-genome
+rsem,ensembl,drosophila_melanogaster,transcriptome_joined_filtered,transcriptome,rsem-ensembl-transcriptome_gtf_filtered
 rsem,ensembl,homo_sapiens,genome,genome,rsem-ensembl-genome
+rsem,ensembl,homo_sapiens,transcriptome_joined_filtered,transcriptome,rsem-ensembl-transcriptome_gtf_filtered
 rsem,ensembl,mus_musculus,genome,genome,rsem-ensembl-genome
+rsem,ensembl,mus_musculus,transcriptome_joined_filtered,transcriptome,rsem-ensembl-transcriptome_gtf_filtered
 rsem,ensembl,saccharomyces_cerevisiae,genome,genome,rsem-ensembl-genome
+rsem,ensembl,saccharomyces_cerevisiae,transcriptome_joined_filtered,transcriptome,rsem-ensembl-transcriptome_gtf_filtered
