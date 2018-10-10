@@ -3,6 +3,7 @@ kallisto,ensembl,caenorhabditis_elegans,cdna,transcriptome,kallisto-ensembl-cdna
 kallisto,ensembl,caenorhabditis_elegans,ncrna,transcriptome,kallisto-ensembl-ncrna
 kallisto,ensembl,caenorhabditis_elegans,cds,transcriptome,kallisto-ensembl-cds
 kallisto,ensembl,caenorhabditis_elegans,transcriptome_joined,transcriptome,kallisto-ensembl-transcriptome_joined
+kallisto,ensembl,caenorhabditis_elegans,transcriptome_joined_filtered,transcriptome,kallisto-ensembl-transcriptome_joined_filtered
 
 kallisto,ensembl,danio_rerio,cdna,transcriptome,kallisto-ensembl-cdna
 kallisto,ensembl,danio_rerio,ncrna,transcriptome,kallisto-ensembl-ncrna
