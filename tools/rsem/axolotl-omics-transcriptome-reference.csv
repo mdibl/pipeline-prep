@@ -1,0 +1,4 @@
+tool,source,organism,reference_target,reference_target_type,index_prefix
+rsem,axolotl-omics-transcriptome,axolotl,transcriptome,transcriptome,rsem-axolotl-omics-transcriptome-transcriptome
+rsem,axolotl-omics-transcriptome,axolotl,transcriptome_longer300bp,transcriptome,rsem-axolotl-omics-transcriptome-transcriptome
+
