@@ -37,8 +37,8 @@
  
  ## RNA-Seq Pipelines
  * RNAs Long Reads - longer than 200 bp: for mRNAs (poly-A(+)), rRNA-depleted total RNA, or poly-A(-) RNA populations
-     * Paired-end
-     * Single-ended
+     ** Paired-end
+     ** Single-ended
 
  * RNAs Short reads - shorter than 200 bp: for mRNAs (poly-A(+)), rRNA-depleted total RNA, or poly-A(-) RNA populations
  * miRNA-seq: for microRNAs, around 22nt long, that are quantified from RNA-seq data
