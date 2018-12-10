@@ -16,21 +16,6 @@
  * Stats generation
  * Visualization
  
- ## Versioning Data Pipelines
- 
- We run a given pipeline whenever one of the following conditions is met:
- 
- * New release detected from input dataset source
- * New version detected for any alignment tool that is part of the pipeline 
- * New version detected for any file processing tool that is part of the pipeline
- * New version detected for any statistical analysis tool that is part of the pipeline
- 
- Each run represents a version of a given pipeline. Some runs will require indexes be re-generated
- and some not. For example - new release of the reference dataset, or new version of the alignment tool
- both require re-indexing. But a new release of tools/datasets involved in post-indexing steps of a specific
- pipeline might not require re-indexing the reference dataset.
- 
- 
  
  ## Data Pipeline Tools
  ## Input
@@ -67,23 +52,37 @@
 
 RAMPAGE (RNA Annotation and Mapping of Promoters for the Analysis of Gene Expression) is a very accurate sequencing approach to identify transcription start sites (TSSs) at base-pair resolution, to quantify their expression, and to characterize their transcripts. RAMPAGE uses direct cDNA evidence to link specific genes and their TSSs.
 
- ### Alingment tools - Short reads:
+ ## Versioning Data Pipelines
+ 
+ We run a given pipeline whenever one of the following conditions is met:
+ 
+ * New release detected from input dataset source
+ * New version detected for any alignment tool that is part of the pipeline 
+ * New version detected for any file processing tool that is part of the pipeline
+ * New version detected for any statistical analysis tool that is part of the pipeline
+ 
+ Each run represents a version of a given pipeline. Some runs will require indexes be re-generated
+ and some not. For example - new release of the reference dataset, or new version of the alignment tool
+ both require re-indexing. But a new release of tools/datasets involved in post-indexing steps of a specific
+ pipeline might not require re-indexing the reference dataset.
+ 
+ ## Alingment tools - Short reads:
  * Bwa.    -- http://bio-bwa.sourceforge.net/bwa.shtml
  * Hisat2  -- http://ccb.jhu.edu/software/hisat2/manual.shtml#the-hisat2-build-indexer
  
- ### Alingment tools - Long reads:
+ ## Alingment tools - Long reads:
  *	Bowtie2.  -- http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml#getting-started-with-bowtie-2-lambda-phage-example
  *	Bwa(BWA-SW and BWA-MEM)
  *	Hisat2 (a replacement of Tophat)
  * Kalisto
  * Salmon
 
- ### File Processing:
+ ## File Processing:
  * Bamtools
  * Bedtools
  * Samtools
  
- ### Statistical Computing
+ ## Statistical Computing
  * R
  * Cufflinks : 
  ```
