@@ -1,4 +1,0 @@
-
-# Axolotl Pipeline
-
-## Pipeline Type 
