@@ -9,7 +9,8 @@ Alignment to known transcriptome as defined in a fasta file.
 
 Current transcriptome location -> /data/external/axolotl-omics-transcriptome/Am_3.4/axolotl/transcriptome
 
-Current transcriptome (longer300bp) location -> /data/external/axolotl-omics-transcriptome/Am_3.4/axolotl/transcriptome_longer300bp
+Current transcriptome (longer300bp) location -> /data/external/axolotl-omics-transcriptome/Am_3.4/axolotl            
+                                                /transcriptome_longer300bp
 
 ## Read Location
 
