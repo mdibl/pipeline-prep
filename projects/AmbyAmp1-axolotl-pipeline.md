@@ -19,3 +19,7 @@ Current fastq.gz read files location -> /data/internal/JamesGodwin/AmbyAmp1
 ## Adapter File Location
 
 Current default adapter location -> /opt/software/external/ggr-cwl/GGR-cwl-v1.0.0/v1.0/default_adapters_fromfastqc_30aug2018.fa
+
+## Results & JSON file location
+
+Current results and JSON file location -> /data/projects/JamesGodwin/AmbyAmp1
