@@ -26,13 +26,6 @@ Contains the following scripts:
 * Sample Config File Generator: [gen_pcf.sh](#gen_pcf.sh)
 * Jenkins Job Submitter : [build_pipeline.sh](#build_pipeline.sh) 
 
-### To Be Tested as standalone
-* bowtie2.aligner.sh  
-* cutadapt.sh  
-* trimmomatic.sh
-* fastqc.sh
-* run-pipeline.sh
-* run-cwl.sh   
 
 ### gen_config.sh
 
@@ -85,3 +78,10 @@ Triggers  a pipeline build on Jenkins server.
    for the specified sampleID (Example 2)
 ``` 
 
+### To Be Tested as standalone
+* bowtie2.aligner.sh  
+* cutadapt.sh  
+* trimmomatic.sh
+* fastqc.sh
+* run-pipeline.sh
+* run-cwl.sh   
