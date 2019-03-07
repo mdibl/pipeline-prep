@@ -3,6 +3,7 @@
 A base for scripts and configuration files used to
 run a given pipeline.
 
+Workflow: gen_config.sh => gen_pcf.sh => build_pipeline.ss 
 
 ## The Config files directory (cfgs)
 Contains the following files:
@@ -21,9 +22,9 @@ Contains the following scripts:
 
 ### Tested as standalone script
 
-* [Experiment Main Config File Genarator](#gen_config.sh)
-* [Sample Config File Generator](#gen_pcf.sh)
-* [Jenkins Job Submitter](#build_pipeline.sh) 
+* Experiment Main Config File Genarator :(#gen_config.sh)
+* Sample Config File Generator: (#gen_pcf.sh)
+* Jenkins Job Submitter : (#build_pipeline.sh) 
 
 ### To Be Tested as standalone
 * bowtie2.aligner.sh  
