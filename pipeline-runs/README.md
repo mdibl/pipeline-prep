@@ -27,7 +27,7 @@ Contains the following scripts:
 * Jenkins Job Submitter : [build_pipeline.sh](#build_pipeline.sh) 
 
 ### gen_config.sh
-Runs on Jenkins -  Generates the main config file for the experiment pipeline. 
+Runs on Jenkins using Jenkins GUI as input form -  Generates the main config file for the experiment pipeline. 
 ```
 Output: 
   /path2/team_name/projectname/results/cfgs/pipeline.cfg 
