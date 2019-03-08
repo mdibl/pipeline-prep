@@ -6,7 +6,7 @@ run a given pipeline.
 ## Workflow:   gen_config.sh => gen_pcf.sh => build_pipeline.sh
 
 ## GOAL
-Creates an automation that runs pipelines in parallel using Jenkins server.
+Create an automation that runs pipelines in parallel using Jenkins server.
 
 ## What's Done
 - ### Created a set of configuration files and shell scripts that can be used to:
