@@ -3,7 +3,7 @@
 A base for scripts and configuration files used to
 run a given pipeline.
 
-Workflow: gen_config.sh => gen_pcf.sh => build_pipeline.sh
+## Workflow:   gen_config.sh => gen_pcf.sh => build_pipeline.sh
 
 ## The Config files directory (cfgs)
 Contains the following files:
