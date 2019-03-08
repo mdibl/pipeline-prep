@@ -9,18 +9,18 @@ run a given pipeline.
 Creates an automation that runs pipelines in parallel using Jenkins server.
 
 ## What's Done
-- Created a set of configuration files and shell scripts that can be used to:
+- ### Created a set of configuration files and shell scripts that can be used to:
 * generate the main configuration of a give pipepline project. This main config
   file contains mapping to the input datasets, reference indexes, results directory, path
   to the design file, and more. (gen_config.sh) 
 * generate the pcf config file for each sample using the generated main configuration file (gen_pcf.sh)
 * use the CLI to submit all sample pipelines to Jenkins server (build_pipeline.sh)
 
-- Created Jenkins GUI for:
+- ### Created Jenkins GUI for:
 * gen_config.sh 
 * gen_pcf.sh
 
-- Tested 
+- ### Tested 
 * gen_config.sh (Jenkins step currently running as part of our pipeline process)
 * gen_pcf.sh (Jenkins step currently running as part of our pipeline process) 
 * build_pipeline.sh (only CLI test)
