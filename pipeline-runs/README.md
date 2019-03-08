@@ -5,7 +5,34 @@ run a given pipeline.
 
 ## Workflow:   gen_config.sh => gen_pcf.sh => build_pipeline.sh
 
-## The Config files directory (cfgs)
+## GOAL
+Creates an automation that runs pipelines in parallel using Jenkins server.
+
+## What's Done
+- Created a set of configuration files and shell scripts that can be used to:
+* generate the main configuration of a give pipepline project. This main config
+  file contains mapping to the input datasets, reference indexes, results directory, path
+  to the design file, and more. (gen_config.sh) 
+* generate the pcf config file for each sample using the generated main configuration file (gen_pcf.sh)
+* use the CLI to submit all sample pipelines to Jenkins server (build_pipeline.sh)
+
+- Created Jenkins GUI for:
+* gen_config.sh 
+* gen_pcf.sh
+
+- Tested 
+* gen_config.sh (Jenkins step currently running as part of our pipeline process)
+* gen_pcf.sh (Jenkins step currently running as part of our pipeline process) 
+* build_pipeline.sh (only CLI test)
+
+## To Do
+
+* Setup Jenkins GUI for build_pipeline.sh
+* Setup the main workflow on Jenkins (gen_config.sh => gen_pcf.sh => build_pipeline.sh)
+
+## Project Files Organization 
+
+### The Config files directory (cfgs)
 Contains the following files:
 
 * ### biocore.cfg : 
@@ -17,17 +44,17 @@ Contains the following files:
 * jenkins.cfg  : sets Jenkins global environment variables     
 * trimmomatic.tool_options.cfg: sets trim global environment variables (JAVA_CMD, ILLUMINACLIP_OPTIONS,TRIMM_CMD_OPTIONS)
 
-## Scripts Directory (src)
+### Scripts Directory (src)
 
 Contains the following scripts:
 
-### Tested as standalone script
+#### Tested as standalone script
 
 * Experiment Main Config File Genarator : [gen_config.sh](#gen_config.sh)
 * Sample Config File Generator: [gen_pcf.sh](#gen_pcf.sh)
 * Jenkins Job Submitter : [build_pipeline.sh](#build_pipeline.sh) 
 
-### gen_config.sh
+#### gen_config.sh
 Generates the main config file for the experiment pipeline.  Runs on Jenkins using jenkins GUI as input form can also be ran on the CLI - 
 
 Jenkins job: https://jenkins.mdibl.org/view/CWL_Workflows/job/generate-project-config/
@@ -47,7 +74,7 @@ Input:
 9) READ2 pattern 
 10) cwl_script  - full path to the cwl script to use for this pipeline
 ````
-### gen_pcf.sh
+#### gen_pcf.sh
 
 Generates a pcf config file for a given pipeline. Runs on Jenkins using jenkins GUI as input form can also be ran on the CLI.
 
@@ -71,7 +98,7 @@ Where:
      generates a pcf file for the specified sampleID
 
 ```
-### build_pipeline.sh
+#### build_pipeline.sh
 
 Triggers  a pipeline build on Jenkins server.
 
