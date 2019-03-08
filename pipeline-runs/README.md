@@ -8,13 +8,13 @@ Workflow: gen_config.sh => gen_pcf.sh => build_pipeline.sh
 ## The Config files directory (cfgs)
 Contains the following files:
 
-* biocore.cfg                  
-* cutadapt.tool_options.cfg  
-* fastqc.tool_options.cfg  
-* bowtie2.aligner_options.cfg  
-* cwl.tool_options.cfg       
-* jenkins.cfg              
-* trimmomatic.tool_options.cfg
+* biocore.cfg :   Set path to local storage of programs, indexes, data,and results
+* cutadapt.tool_options.cfg  : sets CUTADAPT_CMD_OPTIONS variable
+* fastqc.tool_options.cfg   : sets FASTQC_CMD_OPTIONS variable 
+* bowtie2.aligner_options.cfg  : sets ALIGNER_CMD_OPTIONS variable 
+* cwl.tool_options.cfg  : sets CWL_COMMAND_OPTIONS variable      
+* jenkins.cfg  : sets Jenkins global environment variables     
+* trimmomatic.tool_options.cfg: sets trim global environment variables (JAVA_CMD, ILLUMINACLIP_OPTIONS,TRIMM_CMD_OPTIONS)
 
 ## Scripts Directory (src)
 
