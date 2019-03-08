@@ -28,7 +28,9 @@ Contains the following scripts:
 * Jenkins Job Submitter : [build_pipeline.sh](#build_pipeline.sh) 
 
 ### gen_config.sh
-Runs on Jenkins using Jenkins GUI as the input form -  Generates the main config file for the experiment pipeline. 
+Generates the main config file for the experiment pipeline.  Runs on Jenkins using jenkins GUI as input form can also be ran on the CLI - 
+
+Jenkins job: https://jenkins.mdibl.org/view/CWL_Workflows/job/generate-project-config/
 ```
 Output: 
   /path2/team_name/projectname/results/cfgs/pipeline.cfg 
@@ -47,7 +49,9 @@ Input:
 ````
 ### gen_pcf.sh
 
-Generates a pcf config file for a given pipeline.
+Generates a pcf config file for a given pipeline. Runs on Jenkins using jenkins GUI as input form can also be ran on the CLI.
+
+JENKINS JOB: https://jenkins.mdibl.org/view/CWL_Workflows/job/generate-pipeline-pcf/
 
 ```
 Usage: ./$script_name path2_pipeline.cfg [sampleID]
