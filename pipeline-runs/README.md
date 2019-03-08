@@ -26,11 +26,24 @@ Contains the following scripts:
 * Sample Config File Generator: [gen_pcf.sh](#gen_pcf.sh)
 * Jenkins Job Submitter : [build_pipeline.sh](#build_pipeline.sh) 
 
-
 ### gen_config.sh
+Runs on Jenkins -  Generates the main config file for the experiment pipeline. 
+```
+Output: 
+  /path2/team_name/projectname/results/cfgs/pipeline.cfg 
 
-Generates the main config file the the experiment
-
+Input: 
+1)  The team name associated with this project -  as found under /data/internal 
+2)  The project name - as found under /data/internal/team_name/ 
+3)  The organism name - according to our standards 
+4)  The username for the owner of the pipeline results directory - Must be a valid username 
+5)  The reference database source - according to our standards - see /data/external 
+6) The reference database version - example 95  for ensembl release 95 
+7) The reference dataset - according to our standards under /data/scratch/ 
+8) READ1 pattern 
+9) READ2 pattern 
+10) cwl_script  - full path to the cwl script to use for this pipeline
+````
 ### gen_pcf.sh
 
 Generates a pcf config file for a given pipeline.
