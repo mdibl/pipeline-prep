@@ -8,7 +8,7 @@ Workflow: gen_config.sh => gen_pcf.sh => build_pipeline.sh
 ## The Config files directory (cfgs)
 Contains the following files:
 
-* ### biocore.cfg :   Set path to local storage of programs, indexes, data,and results
+* ### biocore.cfg : ###  Set path to local storage of programs, indexes, data,and results
 * cutadapt.tool_options.cfg  : sets CUTADAPT_CMD_OPTIONS variable
 * fastqc.tool_options.cfg   : sets FASTQC_CMD_OPTIONS variable 
 * bowtie2.aligner_options.cfg  : sets ALIGNER_CMD_OPTIONS variable 
