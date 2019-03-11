@@ -10,7 +10,7 @@ Create an automation that runs pipelines in parallel using Jenkins server.
 
 ## What's Done
 - ### Created a set of configuration files and shell scripts that can be used to:
-* generate the main configuration of a give pipepline project. This main config
+* generate the main configuration of a given pipeline project. This main config
   file contains mapping to the input datasets, reference indexes, results directory, path
   to the design file, and more. (gen_config.sh) 
 * generate the pcf config file for each sample using the generated main configuration file (gen_pcf.sh)
