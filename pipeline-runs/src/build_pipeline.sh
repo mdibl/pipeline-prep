@@ -20,7 +20,8 @@ working_dir=`pwd`
 parent_dir=`dirname $working_dir`
 cfgs_dir=$parent_dir/cfgs
 PIPELINE_CONFIG_FILE=$1
-sample_id=$2
+JENKINS_JOB=$2
+sample_id=$3
 JENKINS_CONFIG=$cfgs_dir/jenkins.cfg
 CWLTOOL=`which cwltool`
 CURRENT_USER=`id -un`
@@ -75,6 +76,7 @@ echo "Launching $PROJECT_NAME pipelines on Jenkins  "
 echo "********************************************************"
 date
 PROJECT_META_BASE=$PIPELINE_META_BASE/$PROJECT_NAME
+[ -z "$JENKINS_JOB" ] && JENKINS_JOB=$DEFAULT_JENKINS_JOB
 
 launch_build(){
   METADATA_SCRIPT=$PROJECT_META_BASE/$sample_id.$ORGANISM.pcf
