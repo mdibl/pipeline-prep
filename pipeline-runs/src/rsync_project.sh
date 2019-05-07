@@ -141,7 +141,7 @@ then
 fi
 #Path to the reference data
 database_version=$REF_DATABASE-$REF_DATABASE_VERSION
-dataset_base=$SCRATCH_BASE/$database_version
+dataset_base=$BIOCORE_SCRATCH_BASE/$database_version
 aws_dataset_base=$AWS_SCRATCH_BASE/$database_version
 #Path to the reads and design file
 reads_base=$SCRATCH_BASE/$PROJECT_TEAM_NAME/$PROJECT_NAME
@@ -159,7 +159,7 @@ if [ -d $PATH2_JSON_FILES ]
 then
     echo `date`" - Migrating json files: $PATH2_JSON_FILES to $AWS_PIPELINE_PROJECTS_BASE"| tee -a $log 
     [ ! -d $AWS_PIPELINE_PROJECTS_BASE/$PROJECT_NAME ] && mkdir -p $AWS_PIPELINE_PROJECTS_BASE/$PROJECT_NAME
-    ${rsync_script} $PATH2_JSON_FILES/ $AWS_PIPELINE_PROJECTS_BASE/$PROJECT_NAME 2>&1 | tee -a $log
+    ##${rsync_script} $PATH2_JSON_FILES/ $AWS_PIPELINE_PROJECTS_BASE/$PROJECT_NAME 2>&1 | tee -a $log
 else
     echo `date`" - ERROR: json files base directory $PATH2_JSON_FILES missing "| tee -a $log 
     exit 1
@@ -170,28 +170,25 @@ if [ -d $PIPELINE_META_BASE/$PROJECT_NAME ]
 then
     echo `date`" - Migrating pcf files: $PIPELINE_META_BASE/$PROJECT_NAME to $AWS_PIPELINE_META_BASE"| tee -a $log
     [ ! -d $AWS_PIPELINE_META_BASE/$PROJECT_NAME ] && mkdir -p $AWS_PIPELINE_META_BASE/$PROJECT_NAME
-    ${rsync_script} $PIPELINE_META_BASE/$PROJECT_NAME/ $AWS_PIPELINE_META_BASE/$PROJECT_NAME 2>&1 | tee -a $log
+    ##${rsync_script} $PIPELINE_META_BASE/$PROJECT_NAME/ $AWS_PIPELINE_META_BASE/$PROJECT_NAME 2>&1 | tee -a $log
 else
     echo `date`" - ERROR: pcf files base directory $PIPELINE_META_BASE/$PROJECT_NAME missing "| tee -a $log           
     exit 1
 fi
 
-echo "" | tee -a $log
 # rsync software:json files, pcf files, cwl script, programs,
-echo `date`" - Migrating software: $BIOCORE_SOFTWARE_BASE/ to $AWS_SOFTWARE_BASE/"| tee -a $log
-${rsync_script} $BIOCORE_SOFTWARE_BASE/ $AWS_SOFTWARE_BASE 2>&1 | tee -a $log
 #
 # rsync sequence reads
 echo "" | tee -a $log
 echo `date`" - Migrating sequence reads: $reads_base to $AWS_SCRATCH_READS_BASE/$PROJECT_TEAM_NAME"| tee -a $log
 [ ! -d $aws_reads_base ] && mkdir -p $aws_reads_base
- ${rsync_script}  $reads_base $AWS_SCRATCH_READS_BASE/$PROJECT_TEAM_NAME/ 2>&1 | tee -a $log
+ ##${rsync_script}  $reads_base $AWS_SCRATCH_READS_BASE/$PROJECT_TEAM_NAME/ 2>&1 | tee -a $log
 
 echo "" | tee -a $log
 # rsync reference datasets
 echo `date`" - Migrating reference dataset:$dataset_base/$ORGANISM* to $aws_dataset_base/"| tee -a $log
 [ ! -d $aws_dataset_base ] && mkdir -p $aws_dataset_base
-${rsync_script} $dataset_base/$ORGANISM* $dataset_base/ 2>&1 | tee -a $log
+## ${rsync_script} $dataset_base/$ORGANISM* $dataset_base/ 2>&1 | tee -a $log
 
 echo "" | tee -a $log
 # rsync reference indexes (data/transform) for each index tool used in the pipeline
@@ -210,11 +207,16 @@ then
         aws_index_base=$AWS_INDEX_BASE/$indexer/$database_version
         echo `date`" - Migrating $indexer reference indexes: $local_index_base/$ORGANISM* to $aws_index_base/"| tee -a $log
         [ ! -d $aws_index_base ] && mkdir -p $aws_index_base
-        ${rsync_script} $local_index_base/$ORGANISM* $aws_index_base/ 2>&1 | tee -a $log
+        ##${rsync_script} $local_index_base/$ORGANISM* $aws_index_base/ 2>&1 | tee -a $log
     fi
     echo "" | tee -a $log
   done
 fi
+echo "" | tee -a $log
+# rsync software directory,
+echo `date`" - Migrating software: $BIOCORE_SOFTWARE_BASE/ to $AWS_SOFTWARE_BASE/"| tee -a $log
+##${rsync_script} $BIOCORE_SOFTWARE_BASE/ $AWS_SOFTWARE_BASE 2>&1 | tee -a $log
+#
 #Procced with data transfer if there is no issue
 if [  "$issue_found" = true ]
 then
