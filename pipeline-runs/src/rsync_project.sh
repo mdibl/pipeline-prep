@@ -118,7 +118,6 @@ echo "********************************************************"| tee -a $log
 date
 ## We migrate the entire software directory to cloud 
 #  Since both json files and pcf files are expected to be installed under
-## /opt/software/internal/ 
 # 
 PROJECT_META_BASE=$PIPELINE_META_BASE/$PROJECT_NAME
 PROJECT_JSON_BASE=$PATH2_JSON_FILE
