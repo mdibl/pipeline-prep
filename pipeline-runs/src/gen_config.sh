@@ -27,7 +27,23 @@ REF_DATASET=$7
 READ1=$8
 READ2=$9
 ## use {} to access the value of argument number > 9
-TARGET_CWL=${10}
+CWL_SCRIPT=${10}
+## Where we will store the pipeline meta config file for each sample
+# name format sampleID.organism.pcf
+PCF_BASE=${11}
+PCF_PROJECT_BASE=$PCF_BASE/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
+##We expect to find a json file for each sample under this path
+# flename format sampleID.organism.json
+JSON_BASE=${12}
+JSON_PROJECT_BASE=$JSON_BASE/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
+READS_BASE=${13}/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
+## Setup path samples and design file 
+DESIGN_FILE=${READS_BASE}/${PROJECT_NAME}.design.txt
+GIT_REPOS=${14}
+RESULTS_DIR=${15}/${PROJECT_TEAM_NAME}/${PROJECT_NAME}/results
+
+GIT_REPOS_PCF_BASE=$GIT_REPOS/`basename $PCF_BASE`/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
+GIT_REPOS_JSON_BASE=$GIT_REPOS/`basename $JSON_BASE`/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
 
 if [ ! -d $cfgs_dir ]
 then
@@ -40,28 +56,12 @@ then
    exit 1
 fi
 source  $cfgs_dir/biocore.cfg
-TEMP_RESULTS_DIR=${BIOCORE_INFO_PATH[SCRATCH_BASE]}/${PROJECT_TEAM_NAME}/${PROJECT_NAME}/results
-FINAL_RESULTS_DIR=${BIOCORE_INFO_PATH[PROJECTS_BASE]}/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
-if [ -z "$TARGET_CWL" ]
-then
-   CWL_SCRIPT=${BIOCORE_INFO_PATH[PIPELINE_PROJECTS_BASE]}/${PROJECT_NAME}/${PROJECT_NAME}.cwl
-else
-   CWL_SCRIPT=$TARGET_CWL
-fi
-##We expect to find a json file for each sample under this path
-# flename format sampleID.organism.json
-PATH2_JSON_FILES=${BIOCORE_INFO_PATH[PIPELINE_PROJECTS_BASE]}/${PROJECT_NAME}
-## Where we will store the pipeline meta config file for each sample
-# name format sampleID.organism.pcf
-PIPELINE_META_BASE=${BIOCORE_INFO_PATH[PIPELINE_META_BASE]}
-## Setup path samples and design file 
-ORIGINAL_READS_BASE=${BIOCORE_INFO_PATH[INTERNAL_DATA_BASE]}/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
-DESIGN_FILE=${ORIGINAL_READS_BASE}/${PROJECT_NAME}.design.txt
+
 ### To do
 ## 1) Check if ORIGINAL_READS_BASE exists
 ## 2) Check if design file exists
 #  
-pipeline_config_base=${TEMP_RESULTS_DIR}/cfgs
+pipeline_config_base=${RESULTS_DIR}/cfgs
 [ ! -d $pipeline_config_base ] && mkdir -p $pipeline_config_base
 
 pipeline_cfg_file=$pipeline_config_base/pipeline.cfg
@@ -88,16 +88,14 @@ echo "## Set path to cwl script - filename format: project_name.cwl">>$pipeline_
 echo "CWL_SCRIPT=$CWL_SCRIPT">>$pipeline_cfg_file
 echo "## We expect to find a json file for each sample under this path">>$pipeline_cfg_file
 echo "## filename format: sampleID.organism.json">>$pipeline_cfg_file
-echo "PATH2_JSON_FILES=$PATH2_JSON_FILES">>$pipeline_cfg_file
+echo "PATH2_JSON_FILES=$JSON_PROJECT_BASE">>$pipeline_cfg_file
 echo "">>$pipeline_cfg_file
 echo "## Where we will store the pipeline meta config file for each sample">>$pipeline_cfg_file
 echo "## filename format:sampleID.organism.pcf">>$pipeline_cfg_file
-echo "PIPELINE_META_BASE=$PIPELINE_META_BASE">>$pipeline_cfg_file
+echo "PIPELINE_META_BASE=$PCF_PROJECT_BASE">>$pipeline_cfg_file
 echo "">>$pipeline_cfg_file
 echo "## Set path to intermediary results">>$pipeline_cfg_file
-echo "TEMP_RESULTS_DIR=$TEMP_RESULTS_DIR">>$pipeline_cfg_file
-echo "## Set path to final results">>$pipeline_cfg_file
-echo "FINAL_RESULTS_DIR=${FINAL_RESULTS_DIR}">>$pipeline_cfg_file
+echo "RESULTS_DIR=$RESULTS_DIR">>$pipeline_cfg_file
 echo "## Set Reference organism info">>$pipeline_cfg_file
 echo "ORGANISM=$ORGANISM">>$pipeline_cfg_file
 echo "REF_DATABASE=$REF_DATABASE">>$pipeline_cfg_file
@@ -106,7 +104,7 @@ echo "## Reference dataset used to generate indexes">>$pipeline_cfg_file
 echo "REF_DATASET=$REF_DATASET">>$pipeline_cfg_file
 echo "">>$pipeline_cfg_file
 echo "## Setup path sample reads and design file ">>$pipeline_cfg_file
-echo "ORIGINAL_READS_BASE=${ORIGINAL_READS_BASE}">>$pipeline_cfg_file
+echo "READS_BASE=${READS_BASE}">>$pipeline_cfg_file
 echo "DESIGN_FILE=${DESIGN_FILE}">>$pipeline_cfg_file
 echo "">>$pipeline_cfg_file
 echo "## Set the format of R1 and R2">>$pipeline_cfg_file
