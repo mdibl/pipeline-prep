@@ -104,7 +104,7 @@ function gen_metafile(){
      echo "#" >> ${PIPELINE_METADATA_SCRIPT}
      echo "## Pipeline results directory " >> ${PIPELINE_METADATA_SCRIPT}
      echo "#" >> ${PIPELINE_METADATA_SCRIPT}
-     echo "RESULTS_DIR=${TEMP_RESULTS_DIR}" >> ${PIPELINE_METADATA_SCRIPT}
+     echo "RESULTS_DIR=${RESULTS_DIR}" >> ${PIPELINE_METADATA_SCRIPT}
      echo "#" >> ${PIPELINE_METADATA_SCRIPT}
 }
 
