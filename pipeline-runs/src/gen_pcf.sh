@@ -80,9 +80,8 @@ function gen_metafile(){
         echo "WARNING: JSON file missing - $JSON_FILE"
         #exit 1
      fi
-     PROJECT_META_BASE=$PIPELINE_META_BASE/$PROJECT_NAME
-     [ ! -d $PROJECT_META_BASE ] && mkdir -p $PROJECT_META_BASE
-     PIPELINE_METADATA_SCRIPT=$PROJECT_META_BASE/$sample_id.$ORGANISM.pcf
+     [ ! -d $PIPELINE_META_BASE ] && mkdir -p $PIPELINE_META_BASE
+     PIPELINE_METADATA_SCRIPT=$PIPELINE_META_BASE/$sample_id.$ORGANISM.pcf
      [ -f ${PIPELINE_METADATA_SCRIPT} ] && rm -f ${PIPELINE_METADATA_SCRIPT}
      touch ${PIPELINE_METADATA_SCRIPT}
      echo "#!/bin/sh" > ${PIPELINE_METADATA_SCRIPT}
