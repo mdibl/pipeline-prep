@@ -1,12 +1,5 @@
 #!/bin/sh
 
-rsync_prog=`which rsync`
-if [ ! -f $rsync_prog ]
-then
-   echo $rsync_prog
-   echo "'rsync' not installed on `pwd`"
-   exit 1
-fi
 
 #rsync_options="--links --ignore-errors"
 # make sure the connection is passwordless between the host
@@ -21,7 +14,13 @@ SCRIPT_NAME=`basename $0`
 
 #rsync_options=' -avz  --rsync-path="/usr/bin/sudo /usr/bin/rsync" --exclude=.snapshot'
 rsync_options=' -avz  --exclude=.snapshot --exclude=results --exclude=logs'
-
+rsync_prog=`which rsync`
+if [ ! -f $rsync_prog ]
+then
+   echo $rsync_prog
+   echo "'rsync' not installed on `uname -n`"
+   exit 1
+fi
 
 #Check the number of arguments
 if [ $# -lt 2 ]
@@ -30,7 +29,7 @@ then
   echo "***********************************************"
   echo "Bad usage ---"
   echo "Usage: ./$SCRIPT_NAME  LOCAL_DIR REMOTE_DIR"
-  echo "Example1: ./$SCRIPT_NAME  /data/scratch/ensembl-94/ /data/scratch/ensembl-94"
+  echo "Example1: ./$SCRIPT_NAME  /opt/software /s3-drives/biocore-software"
   echo ""
   echo "***********************************************"
   echo ""
@@ -38,13 +37,11 @@ then
 fi
 src_dir="$1"
 dest_dir="$2"
-base_dir=`dirname $1`
-echo "Creating $base_dir"
-exit 0
-[ ! -d $base_dir ] && mkdir -p $base_dir
+[ ! -d $dest_dir ] && mkdir -p $dest_dir
 
 ## rsync /opt/software
-rsync $rsync_options $src_dir $dest_dir 
+echo " Running: $rsync_prog $rsync_options $src_dir $dest_dir"
+$rsync_prog $rsync_options $src_dir $dest_dir 
 if [ $? -ne 0 ]
 then
    echo "Cmd: rsync $rsync_options $src_dir $dest_dir - FAILED"
