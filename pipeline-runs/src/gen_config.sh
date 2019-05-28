@@ -41,7 +41,7 @@ READS_BASE=${13}/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
 #DESIGN_FILE=${READS_BASE}/${PROJECT_NAME}.design.txt
 GIT_REPOS=${14}
 RESULTS_DIR_BASE=${15}/${PROJECT_TEAM_NAME}/${PROJECT_NAME}/results
-RESULTS_DIR=${RESULTS_DIR_BASE}/run-$(date +%s)
+RESULTS_DIR=${RESULTS_DIR_BASE}/${PROJECT_NAME}_$(date +%s)
 ## Setup path samples and design file 
 DESIGN_FILE=${16}
 
@@ -64,7 +64,7 @@ source  $cfgs_dir/biocore.cfg
 ## 1) Check if ORIGINAL_READS_BASE exists
 ## 2) Check if design file exists
 #  
-pipeline_config_base=${RESULTS_DIR_BASE}/cfgs
+pipeline_config_base=${RESULTS_DIR}/cfgs
 [ ! -d $pipeline_config_base ] && mkdir -p $pipeline_config_base
 
 pipeline_cfg_file=$pipeline_config_base/pipeline.cfg
