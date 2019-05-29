@@ -42,6 +42,8 @@ READS_BASE=${13}/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
 GIT_REPOS=${14}
 RESULTS_DIR_BASE=${15}/${PROJECT_TEAM_NAME}/${PROJECT_NAME}/results
 RESULTS_DIR=${RESULTS_DIR_BASE}/${PROJECT_NAME}_$(date +%s)
+pipeline_config_base=${RESULTS_DIR}/cfgs
+pipeline_cfg_file=$pipeline_config_base/pipeline.cfg
 ## Setup path samples and design file 
 DESIGN_FILE=${16}
 
@@ -58,17 +60,10 @@ then
    echo "ERROR: Missing biocore.cfg under $cfgs_dir"
    exit 1
 fi
-source  $cfgs_dir/biocore.cfg
-
-### To do
-## 1) Check if ORIGINAL_READS_BASE exists
-## 2) Check if design file exists
-#  
-pipeline_config_base=${RESULTS_DIR}/cfgs
 [ ! -d $pipeline_config_base ] && mkdir -p $pipeline_config_base
-
-pipeline_cfg_file=$pipeline_config_base/pipeline.cfg
 [ -f $pipeline_cfg_file ] && rm -f $pipeline_cfg_file
+
+source  $cfgs_dir/biocore.cfg
 touch $pipeline_cfg_file
 echo "###################################################" >> $pipeline_cfg_file
 echo "## ${PROJECT_NAME} Pipeline Global Config File " >> $pipeline_cfg_file
@@ -121,3 +116,5 @@ echo "declare -a SAMPLES" >> $pipeline_cfg_file
 echo '[ -f $DESIGN_FILE ] && SAMPLES=`cat $DESIGN_FILE | cut -f1 | sort | uniq`'>> $pipeline_cfg_file
 echo "$pipeline_cfg_file generated"
 date
+export PIPELINE_CONFIG_FILE=$pipeline_cfg_file
+exit 0
