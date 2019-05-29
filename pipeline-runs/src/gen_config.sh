@@ -114,7 +114,5 @@ echo "## Sample IDs are in the first column of the file" >> $pipeline_cfg_file
 echo "declare -a SAMPLES" >> $pipeline_cfg_file
 
 echo '[ -f $DESIGN_FILE ] && SAMPLES=`cat $DESIGN_FILE | cut -f1 | sort | uniq`'>> $pipeline_cfg_file
-echo "$pipeline_cfg_file generated"
-date
-export PIPELINE_CONFIG_FILE=$pipeline_cfg_file
+echo "$pipeline_cfg_file"
 exit 0
