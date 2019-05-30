@@ -20,7 +20,7 @@ working_dir=`pwd`
 parent_dir=`dirname $working_dir`
 cfgs_dir=$parent_dir/cfgs
 PIPELINE_CONFIG_FILE=$1
-JENKINS_JOB=$2
+SERVER_TYPE=$2
 sample_id=$3
 JENKINS_CONFIG=$cfgs_dir/jenkins.cfg
 CWLTOOL=`which cwltool`
@@ -46,7 +46,7 @@ if [ -z "${PIPELINE_CONFIG_FILE}" ]
 then
    echo "********************************************************"
    echo""
-   echo "Usage: ./$script_name path2_pipeline.cfg [sampleID]"
+   echo "Usage: ./$script_name path2_pipeline.cfg [server_type] [sampleID]"
    echo""
    echo "Where:"
    echo "path2_pipeline.cfg: Required - is the full path to your pipeline project config file."
@@ -55,8 +55,7 @@ then
    echo "           Default, triggers a pipeline run for each sample listed in the design file."
    echo ""
    echo ""
-   echo "Example 1: ./$script_name /data/scratch/rna-seq/JarodRollins/JR18-08/results/cfgs/pipeline.cfg"
-   echo "Example 2: ./$script_name /data/scratch/rna-seq/JarodRollins/JR18-08/results/cfgs/pipeline.cfg 22_TO_01_S9"
+   echo "Example 1: ./$script_name /data/scratch/rna-seq/JimCoffman/Embryo_Cortisol_2015/results/Embryo_Cortisol_2015_1559230685/cfgs/pipeline.cfg"
    echo ""
    echo "Assumptions: assumes the following structure under $script_name script parent directory"
    echo "   1) cfgs "
@@ -75,11 +74,11 @@ echo "********************************************************"
 echo "Launching $PROJECT_NAME pipelines on Jenkins  "
 echo "********************************************************"
 date
-PROJECT_META_BASE=$PIPELINE_META_BASE/$PROJECT_NAME
-[ -z "$JENKINS_JOB" ] && JENKINS_JOB=$DEFAULT_JENKINS_JOB
+JENKINS_JOB=${DEFAULT_JENKINS_JOB[$SERVER_TYPE]}
+[ -z "$JENKINS_JOB" ] && JENKINS_JOB=${DEFAULT_JENKINS_JOB[local]}
 
 launch_build(){
-  METADATA_SCRIPT=$PROJECT_META_BASE/$sample_id.$ORGANISM.pcf
+  METADATA_SCRIPT=$PIPELINE_META_BASE/$sample_id.$ORGANISM.pcf
   if [ -f ${METADATA_SCRIPT} ]
   then
      echo "SampleID: $sample_id"
