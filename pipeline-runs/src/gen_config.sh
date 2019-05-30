@@ -55,9 +55,6 @@ if [[ $PIPELINE_PCF_BASE =~ .*($BIOCORE_PROJECTS_GIT_REPOS.*) ]] ; then
     git_base="${BASH_REMATCH[1]}"
 fi
 
-echo "The git repos is: $git_base"
-
-
 GIT_REPOS_PCF_BASE=$GIT_REPOS/`basename $PCF_BASE`/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
 GIT_REPOS_JSON_BASE=$GIT_REPOS/`basename $JSON_BASE`/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
 
