@@ -25,6 +25,7 @@ sample_id=$3
 JENKINS_CONFIG=$cfgs_dir/jenkins.cfg
 CWLTOOL=`which cwltool`
 CURRENT_USER=`id -un`
+CURRENT_USER=bioadmin
 
 if [ ! -d $cfgs_dir ]
 then
