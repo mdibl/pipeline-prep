@@ -28,7 +28,9 @@ READ1=""
 READ2=""
 ## use {} to access the value of argument number > 9
 CWL_SCRIPT=$7
-current_timestamp=${PROJECT_NAME}_$(date +%s)
+PROJECT_PREFIX=`echo $PROJECT_NAME | cut -d '.' -f1`
+#current_timestamp=${PROJECT_NAME}_$(date +%s)
+current_timestamp=${PROJECT_PREFIX}_$(date +%s)
 ## Where we will store the pipeline meta config file for each sample
 # name format sampleID.organism.pcf
 PCF_BASE=$8
@@ -41,10 +43,10 @@ READS_BASE=${10}/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
 ## Setup path samples and design file 
 #DESIGN_FILE=${READS_BASE}/${PROJECT_NAME}.design.txt
 GIT_REPOS=${11}
-RESULTS_DIR_BASE=${12}/${PROJECT_TEAM_NAME}/${PROJECT_NAME}/results
+RESULTS_DIR_BASE=${12}/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
 RESULTS_DIR=${RESULTS_DIR_BASE}/$current_timestamp
 
-
+## The master config file (pipeline.cfg) is run-specific
 pipeline_config_base=${RESULTS_DIR}/cfgs
 pipeline_cfg_file=$pipeline_config_base/pipeline.cfg
 ## Setup path samples and design file 
