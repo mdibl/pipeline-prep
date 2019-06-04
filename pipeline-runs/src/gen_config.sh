@@ -75,8 +75,12 @@ fi
 source  $cfgs_dir/biocore.cfg
 #
 #Project design file
-INITIAL_READS_BASE=${BIOCORE_INFO_PATH[INTERNAL_DATA_BASE]}/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
-DESIGN_FILE=${INITIAL_READS_BASE}/${PROJECT_NAME}.design.txt
+ORIGINAL_READS_BASE=${BIOCORE_INFO_PATH[INTERNAL_DATA_BASE]}/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
+DESIGN_FILE=${ORIGINAL_READS_BASE}/${PROJECT_NAME}.design.txt
+if [ ! -f $DESIGN_FILE ]
+then
+   echo "WARNING: Design file missing - see $DESIGN_FILE"
+fi
 touch $pipeline_cfg_file
 echo "###################################################" >> $pipeline_cfg_file
 echo "## ${PROJECT_NAME} Pipeline Global Config File " >> $pipeline_cfg_file
