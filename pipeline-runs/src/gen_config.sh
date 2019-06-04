@@ -50,7 +50,6 @@ RESULTS_DIR=${RESULTS_DIR_BASE}/$current_timestamp
 pipeline_config_base=${RESULTS_DIR}/cfgs
 pipeline_cfg_file=$pipeline_config_base/pipeline.cfg
 ## Setup path samples and design file 
-DESIGN_FILE=${13}
 git_base=""
 
 if [[ $PIPELINE_PCF_BASE =~ .*($BIOCORE_PROJECTS_GIT_REPOS.*) ]] ; then
@@ -74,6 +73,10 @@ fi
 [ -f $pipeline_cfg_file ] && rm -f $pipeline_cfg_file
 
 source  $cfgs_dir/biocore.cfg
+#
+#Project design file
+INITIAL_READS_BASE=${BIOCORE_INFO_PATH[INTERNAL_DATA_BASE]}/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
+DESIGN_FILE=${INITIAL_READS_BASE}/${PROJECT_NAME}.design.txt
 touch $pipeline_cfg_file
 echo "###################################################" >> $pipeline_cfg_file
 echo "## ${PROJECT_NAME} Pipeline Global Config File " >> $pipeline_cfg_file
