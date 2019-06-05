@@ -39,25 +39,62 @@ PCF_PROJECT_BASE=$PCF_BASE/${PROJECT_TEAM_NAME}/${PROJECT_NAME}/$current_timesta
 # flename format sampleID.organism.json
 JSON_BASE=$9
 JSON_PROJECT_BASE=$JSON_BASE/${PROJECT_TEAM_NAME}/${PROJECT_NAME}/$current_timestamp
-READS_BASE=${10}/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
-## Setup path samples and design file 
-#DESIGN_FILE=${READS_BASE}/${PROJECT_NAME}.design.txt
-GIT_REPOS=${11}
-RESULTS_DIR_BASE=${12}/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
+results_base=${11}
+RESULTS_DIR_BASE=$results_base/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
 RESULTS_DIR=${RESULTS_DIR_BASE}/$current_timestamp
+
+READS_BASE=${10}/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
+
+if [ -z "$results_base" ]
+then
+   echo ""
+   echo "****************************************************"
+   echo "*      Project Main Config File Generator          *"
+   echo "****************************************************"
+   echo ""
+   echo "What It Does: generates the main config file(pipeline.cfg) for this project runID."
+   echo "This main config file sets global enviroment variables used by different downstream proccesses. "
+   echo "The generated config file is stored under PIPELINE_RESULTS_BASE/PROJECT_TEAM_NAME/PROJECT_NAME/runID/cfgs/"
+   echo ""
+   echo "Usage: ./$script_name PIPELINE_OWNER PROJECT_TEAM_NAME PROJECT_NAME ORGANISM \
+ REF_DATABASE REF_DATABASE_VERSION CWL_SCRIPT \
+ PIPELINE_PCF_BASE PIPELINE_JSON_BASE PIPELINE_READS_BASE PIPELINE_RESULTS_BASE"
+   echo ""
+   echo "Where:"
+   echo "    PIPELINE_OWNER:  The username for the owner of the pipeline results directory - Must be a valid username."
+   echo "    PROJECT_TEAM_NAME: the team name associated with this project -  as found under /data/internal"
+   echo "    PROJECT_NAME: The project name - as found under /data/internal/team_name/ - according to our standards"
+   echo ""
+   echo "    ORGANISM: The organism name - according to our standards"
+   echo "    REF_DATABASE: The reference database source - according to our standards - see /data/external"
+   echo "    REF_DATABASE_VERSION: The reference database version - example 95  for ensembl release 95"
+   echo "    CWL_SCRIPT: full path to the cwl script to use for this pipeline"
+   echo "    PIPELINE_PCF_BASE: pcf files base - according to our standards"
+   echo "    PIPELINE_JSON_BASE: json files base  - according to our standards"
+   echo "    PIPELINE_READS_BASE: input reads base - according to our standards"
+   echo "    PIPELINE_RESULTS_BASE: results base - according to our standards"
+   echo ""
+   echo "Assumptions: assumes the following - relative to the script"
+   echo "   1) ../cfgs "
+   echo "   2) ../cfgs/biocore.cfg"
+   echo ""
+   echo "Example:"
+   echo "    ./gen_config.sh gmurray JimCoffman jcoffman_001.embryo_cortisol_2015 danio_rerio  ensembl 93 /opt/software/external/ggr-cwl/GGR-cwl/v1.0/RNA-seq_pipeline/pipeline-pe-unstranded-with-sjdb.cwl  /data/projects/Biocore/biocore_analysis/biocore_projects/pipeline-runs-meta /data/projects/Biocore/biocore_analysis/biocore_projects/rna-seq /data/scratch/rna-seq  /data/scratch/rna-seq"
+   echo ""
+   exit 1
+fi
 
 ## The master config file (pipeline.cfg) is run-specific
 pipeline_config_base=${RESULTS_DIR}/cfgs
 pipeline_cfg_file=$pipeline_config_base/pipeline.cfg
-## Setup path samples and design file 
 git_base=""
 
 if [[ $PIPELINE_PCF_BASE =~ .*($BIOCORE_PROJECTS_GIT_REPOS.*) ]] ; then
     git_base="${BASH_REMATCH[1]}"
 fi
 
-GIT_REPOS_PCF_BASE=$GIT_REPOS/`basename $PCF_BASE`/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
-GIT_REPOS_JSON_BASE=$GIT_REPOS/`basename $JSON_BASE`/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
+GIT_REPOS_PCF_BASE=$BIOCORE_PROJECTS_GIT_REPOS/`basename $PCF_BASE`/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
+GIT_REPOS_JSON_BASE=$BIOCORE_PROJECTS_GIT_REPOS/`basename $JSON_BASE`/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
 
 if [ ! -d $cfgs_dir ]
 then
