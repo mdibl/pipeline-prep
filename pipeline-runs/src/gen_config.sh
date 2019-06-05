@@ -135,7 +135,7 @@ echo "###################################################" >> $pipeline_cfg_file
 echo "## Set path to local storage" >> $pipeline_cfg_file
 for info_path in "${!BIOCORE_INFO_PATH[@]}"
 do
-    echo "$info_path=${BIOCORE_INFO_PATH[$info_path]}">>$pipeline_cfg_file
+    echo "export $info_path=${BIOCORE_INFO_PATH[$info_path]}">>$pipeline_cfg_file
 done
 echo "">>$pipeline_cfg_file
 echo "## Set path to results">>$pipeline_cfg_file
