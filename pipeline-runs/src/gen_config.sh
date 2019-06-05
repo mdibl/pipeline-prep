@@ -30,7 +30,7 @@ READ2=""
 CWL_SCRIPT=$7
 PROJECT_PREFIX=`echo $PROJECT_NAME | cut -d '.' -f1`
 #current_timestamp=${PROJECT_NAME}_$(date +%s)
-current_timestamp=${PROJECT_PREFIX}_$(date +%s)
+current_timestamp=${PROJECT_PREFIX}.$(date +%s)
 ## Where we will store the pipeline meta config file for each sample
 # name format sampleID.organism.pcf
 PCF_BASE=$8
@@ -79,7 +79,7 @@ then
    echo "   2) ../cfgs/biocore.cfg"
    echo ""
    echo "Example:"
-   echo "    ./gen_config.sh gmurray JimCoffman jcoffman_001.embryo_cortisol_2015 danio_rerio  ensembl 93 /opt/software/external/ggr-cwl/GGR-cwl/v1.0/RNA-seq_pipeline/pipeline-pe-unstranded-with-sjdb.cwl  /data/projects/Biocore/biocore_analysis/biocore_projects/pipeline-runs-meta /data/projects/Biocore/biocore_analysis/biocore_projects/rna-seq /data/scratch/rna-seq  /data/scratch/rna-seq"
+   echo "    ./$script_name gmurray JimCoffman jcoffman_001.embryo_cortisol_2015 danio_rerio  ensembl 93 /opt/software/external/ggr-cwl/GGR-cwl/v1.0/RNA-seq_pipeline/pipeline-pe-unstranded-with-sjdb.cwl  /data/projects/Biocore/biocore_analysis/biocore_projects/pipeline-runs-meta /data/projects/Biocore/biocore_analysis/biocore_projects/rna-seq /data/scratch/rna-seq  /data/scratch/rna-seq"
    echo ""
    exit 1
 fi
@@ -87,6 +87,10 @@ fi
 ## The master config file (pipeline.cfg) is run-specific
 pipeline_config_base=${RESULTS_DIR}/cfgs
 pipeline_cfg_file=$pipeline_config_base/pipeline.cfg
+pipeline_json_template=$pipeline_config_base/template.json
+## 
+logs_base=${RESULTS_DIR}/logs
+log_file=$logs_base/$script_name.log
 git_base=""
 
 if [[ $PIPELINE_PCF_BASE =~ .*($BIOCORE_PROJECTS_GIT_REPOS.*) ]] ; then
@@ -106,17 +110,21 @@ then
    echo "ERROR: Missing biocore.cfg under $cfgs_dir"
    exit 1
 fi
+[ ! -d $logs_base ] && mkdir -p $logs_base
 [ ! -d $pipeline_config_base ] && mkdir -p $pipeline_config_base
 [ -f $pipeline_cfg_file ] && rm -f $pipeline_cfg_file
+[ -f $log_file ] && rm -f $log_file
 
+touch $log_file
 source  $cfgs_dir/biocore.cfg
 #
 #Project design file
 ORIGINAL_READS_BASE=${BIOCORE_INFO_PATH[INTERNAL_DATA_BASE]}/${PROJECT_TEAM_NAME}/${PROJECT_NAME}
 DESIGN_FILE=${ORIGINAL_READS_BASE}/${PROJECT_NAME}.design.txt
+echo `date`>>$log_file
 if [ ! -f $DESIGN_FILE ]
 then
-   echo "WARNING: Design file missing - see $DESIGN_FILE"
+   echo "WARNING: Design file missing - see $DESIGN_FILE" | tee -a $log_file
 fi
 touch $pipeline_cfg_file
 echo "###################################################" >> $pipeline_cfg_file
@@ -130,34 +138,40 @@ do
     echo "$info_path=${BIOCORE_INFO_PATH[$info_path]}">>$pipeline_cfg_file
 done
 echo "">>$pipeline_cfg_file
+echo "## Set path to results">>$pipeline_cfg_file
+echo "export RESULTS_DIR=$RESULTS_DIR">>$pipeline_cfg_file
+echo "## Path to logs">>$pipeline_cfg_file
+echo "export LOG_BASE=$logs_base">>$pipeline_cfg_file
+echo "## Path to json template and pipeline.cfg">>$pipeline_cfg_file
+echo "export CONFIG_BASE=$pipeline_config_base">>$pipeline_cfg_file
 echo "## Set this pipeline ownership">>$pipeline_cfg_file
-echo "PIPELINE_OWNER=$PIPELINE_OWNER">>$pipeline_cfg_file
+echo "export PIPELINE_OWNER=$PIPELINE_OWNER">>$pipeline_cfg_file
 echo "## Set project info">>$pipeline_cfg_file
-echo "PROJECT_TEAM_NAME=$PROJECT_TEAM_NAME">>$pipeline_cfg_file
-echo "PROJECT_NAME=$PROJECT_NAME">>$pipeline_cfg_file
+echo "export PROJECT_TEAM_NAME=$PROJECT_TEAM_NAME">>$pipeline_cfg_file
+echo "export PROJECT_NAME=$PROJECT_NAME">>$pipeline_cfg_file
 echo "">>$pipeline_cfg_file
 echo "## Set path to cwl script - filename format: project_name.cwl">>$pipeline_cfg_file
-echo "CWL_SCRIPT=$CWL_SCRIPT">>$pipeline_cfg_file
+echo "export CWL_SCRIPT=$CWL_SCRIPT">>$pipeline_cfg_file
+echo "## Where we expect to fine the json template to use to generate sample-specific json files for this experiment">>$pipeline_cfg_file
+echo "export JSON_TEMPLATE=$pipeline_json_template">>$pipeline_cfg_file
 echo "## We expect to find a json file for each sample under this path">>$pipeline_cfg_file
 echo "## filename format: sampleID.organism.json">>$pipeline_cfg_file
-echo "PATH2_JSON_FILES=$JSON_PROJECT_BASE">>$pipeline_cfg_file
+echo "export PATH2_JSON_FILES=$JSON_PROJECT_BASE">>$pipeline_cfg_file
 echo "">>$pipeline_cfg_file
 echo "## Where we will store the pipeline meta config file for each sample">>$pipeline_cfg_file
 echo "## filename format:sampleID.organism.pcf">>$pipeline_cfg_file
-echo "PIPELINE_META_BASE=$PCF_PROJECT_BASE">>$pipeline_cfg_file
+echo "export PIPELINE_META_BASE=$PCF_PROJECT_BASE">>$pipeline_cfg_file
 echo "">>$pipeline_cfg_file
-echo "## Set path to intermediary results">>$pipeline_cfg_file
-echo "RESULTS_DIR=$RESULTS_DIR">>$pipeline_cfg_file
 echo "## Set Reference organism info">>$pipeline_cfg_file
-echo "ORGANISM=$ORGANISM">>$pipeline_cfg_file
-echo "REF_DATABASE=$REF_DATABASE">>$pipeline_cfg_file
-echo "REF_DATABASE_VERSION=$REF_DATABASE_VERSION">>$pipeline_cfg_file
+echo "export ORGANISM=$ORGANISM">>$pipeline_cfg_file
+echo "export REF_DATABASE=$REF_DATABASE">>$pipeline_cfg_file
+echo "export REF_DATABASE_VERSION=$REF_DATABASE_VERSION">>$pipeline_cfg_file
 echo "## Reference dataset used to generate indexes">>$pipeline_cfg_file
-echo "REF_DATASET=$REF_DATASET">>$pipeline_cfg_file
+echo "export REF_DATASET=$REF_DATASET">>$pipeline_cfg_file
 echo "">>$pipeline_cfg_file
 echo "## Setup path sample reads and design file ">>$pipeline_cfg_file
-echo "READS_BASE=${READS_BASE}">>$pipeline_cfg_file
-echo "DESIGN_FILE=${DESIGN_FILE}">>$pipeline_cfg_file
+echo "export READS_BASE=${READS_BASE}">>$pipeline_cfg_file
+echo "export DESIGN_FILE=${DESIGN_FILE}">>$pipeline_cfg_file
 echo "">>$pipeline_cfg_file
 echo "## Set the format of R1 and R2">>$pipeline_cfg_file
 echo "declare -A READS">>$pipeline_cfg_file
@@ -167,6 +181,10 @@ echo "## Load sample IDs from the experiment design file into a container" >> $p
 echo "## Sample IDs are in the first column of the file" >> $pipeline_cfg_file
 echo "declare -a SAMPLES" >> $pipeline_cfg_file
 
-echo '[ -f $DESIGN_FILE ] && SAMPLES=`cat $DESIGN_FILE | cut -f1 | sort | uniq`'>> $pipeline_cfg_file
+echo '[ -f $DESIGN_FILE ] && export SAMPLES=`cat $DESIGN_FILE | cut -f1 | sort | uniq`'>> $pipeline_cfg_file
+echo "PIPELINE_CONFIG_FILE=$pipeline_cfg_file">>$log_file
+
+echo "Program Complete">>$log_file
+echo `date`>>$log_file
 echo "$pipeline_cfg_file"
 exit 0
