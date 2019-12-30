@@ -83,7 +83,7 @@ fi
 
 if [ ! -f $tool_exec ]
 then
-   echo "ERROR: $tool_exec executable missing" | tee -a $log
+   echo "ERROR: $tool_exec executable missing" 
    exit 1
 fi
 #If this dataset has already been indexed continue

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #
-#A script to align reads to the spcified indexex
+#A script to align reads to the spcified index
 # created under tool-version/data_source-version/organism-dataset
 
 # Input:
@@ -43,9 +43,9 @@ reads_file=$7
 
 tool_index_base=$INDEX_BASE/$tool_version
 tool_exec=$PACKAGE_INSTALL_BASE/$tool_version/$TOOL_EXEC
-index_dir=$tool_index_base/$source_version/$organism-$dataset
+index_dir=$tool_index_base/$data_source/$source_version/$organism-$dataset
 
-log=$LOGS_BASE/$SCRIPT_NAME.$source_version.$organism-$dataset.$tool_version.log
+log=$LOGS_BASE/$SCRIPT_NAME.$data_source.$source_version.$organism-$dataset.$tool_version.log
 
 rm -rf $log
 touch $log

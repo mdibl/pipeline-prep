@@ -26,7 +26,7 @@ if [ $# -lt 6 ]
 then 
   echo "Usage: ./$SCRIPT_NAME dataset-version  organism dataset \
         path2/reference_fasta_file index_dir index_prefix [polyA]"
-  echo "Example: ./$SCRIPT_NAME ensembl-94  mus_musculus cdna \
+  echo "Example: ./$SCRIPT_NAME release-94  mus_musculus cdna \
  /data/scratch/ensembl-94/mus_musculus-cdna/Mus_musculus.GRCm38.cdna.all.fa \
  /data/transformed/RSEM-v1.3.0/ensembl-94/mus_musculus-cdna transcriptome
         "

@@ -55,8 +55,8 @@ if [  ! -f ${CURRENT_VERSION_FILE} ];then
  fi
 
 CURRENT_VERSION=`cat ${CURRENT_VERSION_FILE}`
-DATA_DIR=${data_source_name}-${CURRENT_VERSION}
-REFERENCE_BASE=${FASTA_FILES_BASE}/${DATA_DIR}
+DATA_DIR=release-${CURRENT_VERSION}
+REFERENCE_BASE=${FASTA_FILES_BASE}/${data_source_name}/${DATA_DIR}
 
 #
 ## Check that the current version of this data source
@@ -68,7 +68,7 @@ then
   exit 1
 fi
 ##Set path to logs
-LOG_FILE=${LOGS_BASE}/${SCRIPT_NAME}.${DATA_DIR}.log
+LOG_FILE=${LOGS_BASE}/${SCRIPT_NAME}.${data_source_name}.${DATA_DIR}.log
 #
 rm -rf ${LOG_FILE}
 touch ${LOG_FILE}
@@ -116,11 +116,12 @@ do
        #
        ## Next if indexes for this dataset version have alrready created for this tool verion
        #If this dataset has already been indexed continue
-       if [ -d ${INDEX_BASE}/${TOOL_VERSION}/${DATA_DIR}/${organism}-${dataset} ]
+       dataset_index_base=${INDEX_BASE}/${TOOL_VERSION}/${data_source_name}/${DATA_DIR}/${organism}-${dataset}
+       if [ -d $dataset_index_base ]
        then
-           if [ "$(ls -A ${INDEX_BASE}/${TOOL_VERSION}/${DATA_DIR}/${organism}-${dataset})" ]
+           if [ "$(ls -A $dataset_index_base)" ]
            then
-              echo "SKIPPING:  ${INDEX_BASE}/${TOOL_VERSION}/${DATA_DIR}/${organism}-${dataset} - Index already exists"
+              echo "SKIPPING:  $dataset_index_base - Index already exists"
               continue
            fi
        fi

@@ -70,18 +70,18 @@ done
 
 tool_index_base=$INDEX_BASE/$tool_version
 tool_exec=$PACKAGE_INSTALL_BASE/$tool_version/$TOOL_INDEX_EXEC
-index_dir=$tool_index_base/$source_version/$organism-$dataset
-datasets_fasta_dir=$FASTA_FILES_BASE/$source_version/$organism-$dataset
+index_dir=$tool_index_base/$data_source/$source_version/$organism-$dataset
+datasets_fasta_dir=$FASTA_FILES_BASE/$data_source/$source_version/$organism-$dataset
 
 source_config=../../data_sources/$data_source.cfg
 if [ ! -d $datasets_fasta_dir ]
 then
-   echo "ERROR: directory $datasets_fasta_dir does not exists" | tee -a $log
+   echo "ERROR: directory $datasets_fasta_dir does not exists"
    exit 1
 fi
 if [ ! -f $tool_exec ]
 then
-   echo "ERROR: $tool_exec executable missing" | tee -a $log
+   echo "ERROR: $tool_exec executable missing"
    exit 1
 fi
 #If this dataset has already been indexed continue
@@ -97,7 +97,7 @@ then
    exit 1
 fi
 
-log=$LOGS_BASE/$SCRIPT_NAME.$source_version.$organism.$dataset.$tool_version.log
+log=$LOGS_BASE/$SCRIPT_NAME.$data_source.$source_version.$organism.$dataset.$tool_version.log
 
 rm -rf $log
 touch $log
@@ -109,7 +109,7 @@ echo "Date:`date`" | tee -a $log
 echo "ORGANIZATION:$ORGANIZATION" | tee -a $log 
 echo "Tool-version: $tool_version" | tee -a $log
 echo "Path to tool exec : $tool_exec" | tee -a $log
-echo "Data Source version: $source_version" | tee -a $log
+echo "Data Source version: $data_source : $source_version" | tee -a $log
 echo "Organism: $organism" | tee -a $log
 echo "Dataset: $dataset" | tee -a $log
 echo "Indexes Directory: $index_dir" | tee -a $log

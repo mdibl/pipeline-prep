@@ -80,8 +80,8 @@ do
     echo "**********************************************"
     echo "Indexing datasets in  : $reference_config"
     echo "**********************************************"
-    ##How we store unzipped data : source_name-version 
-    DATA_VERSION=$data_source-$data_release_number
+    ##How we store unzipped data : source_name/release-version 
+    DATA_VERSION=release-$data_release_number
     for line in  `cat $reference_config`
     do
        IFS=', ' read -r -a fields <<< "$line"
@@ -92,12 +92,12 @@ do
        [ "$target_name" != $tool_name ] && continue
        echo "##" | tee -a $LOG_FILE
        date | tee -a $LOG_FILE
-       echo "Generating $tool_name Indexes for $DATA_VERSION $organism.$dataset dataset" | tee -a $LOG_FILE
+       echo "Generating $tool_name Indexes for $data_source/$DATA_VERSION $organism.$dataset dataset" | tee -a $LOG_FILE
        #
        ## Next if indexes for this dataset version have alrready created for this tool verion
-       if [ -d ${INDEX_BASE}/${TOOL_VERSION}/${DATA_VERSION}/${organism}-${dataset} ]
+       if [ -d ${INDEX_BASE}/${TOOL_VERSION}/$data_source/${DATA_VERSION}/${organism}-${dataset} ]
        then
-           echo "SKIPPING:  ${INDEX_BASE}/${TOOL_VERSION}/${DATA_VERSION}/${organism}-${dataset} already exists"
+           echo "SKIPPING:  ${INDEX_BASE}/${TOOL_VERSION}/$data_source/${DATA_VERSION}/${organism}-${dataset} already exists"
            continue
        fi
        

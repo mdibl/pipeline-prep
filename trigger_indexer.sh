@@ -75,8 +75,8 @@ if [  ! -f ${CURRENT_VERSION_FILE} ];then
  fi
 
 CURRENT_VERSION=`cat ${CURRENT_VERSION_FILE}`
-DATA_DIR=${data_source_name}-${CURRENT_VERSION}
-REFERENCE_BASE=${FASTA_FILES_BASE}/${DATA_DIR}
+DATA_DIR=release-${CURRENT_VERSION}
+REFERENCE_BASE=${FASTA_FILES_BASE}/${data_source_name}/${DATA_DIR}
 # Set global variables specific to this data source
 source ./${data_source_config}
 #
@@ -94,7 +94,7 @@ cd ${TOOL_BASE}
 # get this tool version
 source ./${TOOL_CONFIG}
 ##Set path to logs
-LOG_FILE=${LOGS_BASE}/${SCRIPT_NAME}.${DATA_DIR}.${TOOL_VERSION}.log
+LOG_FILE=${LOGS_BASE}/${SCRIPT_NAME}.${data_source_name}.${DATA_DIR}.${TOOL_VERSION}.log
 #
 rm -rf ${LOG_FILE}
 touch ${LOG_FILE}
@@ -119,9 +119,9 @@ do
     #
     #
     ## Next if indexes for this dataset version have alrready created for this tool verion
-    if [ -d ${INDEX_BASE}/${TOOL_VERSION}/${DATA_DIR}/${organism}-${dataset} ]
+    if [ -d ${INDEX_BASE}/${TOOL_VERSION}/${data_source_name}/${DATA_DIR}/${organism}-${dataset} ]
     then
-        echo "SKIPPING:  ${INDEX_BASE}/${TOOL_VERSION}/${DATA_DIR}/${organism}-${dataset} - Index already exists"
+        echo "SKIPPING:  ${INDEX_BASE}/${TOOL_VERSION}/${data_source_name}/${DATA_DIR}/${organism}-${dataset} - Index already exists"
         continue
     fi
     echo "Running ${tool_name} indexer from `pwd`" | tee -a ${LOG_FILE}
